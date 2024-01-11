@@ -1,5 +1,5 @@
 <div align="center">
-<img src="" alt="logo" width="120" height="120" />
+<img src="https://i.ibb.co/nL6wcq5/39ebd520-36df-41df-8a97-9bb6c4b36299.webp" alt="logo" width="120" height="120" />
 </div>
 
 <h3 align="center">Incento</h3>
