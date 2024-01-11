@@ -1,0 +1,16 @@
+{
+  "name": "Incento",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "vitepress": "^1.0.0-rc.36"
+  },
+  "scripts": {
+    "docs:dev": "npm run -w @incento/docs dev",
+    "docs:build": "npm run -w @incento/docs build",
+    "docs:preview": "npm run -w @incento/docs preview"
+  }
+}
