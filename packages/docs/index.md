@@ -1,25 +1,23 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
   name: "Incento"
-  text: "Incentives System for AI Nodes"
-  tagline: My great project tagline
+  tagline: Incentives System for AI Nodes 
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Read Here
+      link: /docs/01-Intro/01-Summary.md
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Demo
+      link: https://google.ocm
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 💲 Intencentivesd
+    details: Earn money while running AI Nodes
+  - title: 🧠 AI  
+    details: Specialised Ai's that are chain controlled
+  - title: ⚔️ Survial of the fittest 
+    details: Creates a nature like improvement process.
 ---
 
