@@ -1,8 +1,8 @@
 <div align="center">
-<img src="https://i.ibb.co/nL6wcq5/39ebd520-36df-41df-8a97-9bb6c4b36299.webp" alt="logo" width="120" height="120" />
+<img src="https://i.ibb.co/kXMV36K/DALL-E-2024-01-13-11-35-00-A-professional-logo-for-Demi-a-company-focused-on-blockchain-and-mining-T.png" alt="logo" width="120" height="120" />
 </div>
 
-<h3 align="center">Incento</h3>
+<h3 align="center">Demi</h3>
   <p align="center">
   Aleph Hack
         <br />
