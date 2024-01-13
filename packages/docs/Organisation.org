@@ -1,0 +1,50 @@
+#+title: Organisation
+#+COLUMNS: %50ITEM(Task) %7TODO %14CLOCKSUM(Clock)
+
+* Organisation
+** DONE [#A] Call - Friday [2/2]
+:LOGBOOK:
+CLOCK: [2024-01-12 Fri 15:03]--[2024-01-12 Fri 15:16] =>  0:13
+CLOCK: [2024-01-12 Fri 13:15]--[2024-01-12 Fri 14:47] =>  1:32
+:END:
+- [X] call with Anna and Viktor
+  - [X] update about the last week
+  - [X] suggest Prototyping for Incentives Protocoll
+  - [X] scratch out Opti
+    - [X] Show Software Design Workflow
+  - [X] reiterate Ideas
+  - [X] Come up with Demi
+- [X] Add some notes to HackMD
+  - [X] readjust Opti.md
+  - [X] readjust Demi.md (ported)
+  - [X] call it a day
+
+** TODO [#B] Bare Setup - Saturday
+:LOGBOOK:
+CLOCK: [2024-01-13 Sat 14:10]
+CLOCK: [2024-01-13 Sat 13:48]--[2024-01-13 Sat 14:10] =>  0:22
+CLOCK: [2024-01-13 Sat 12:56]--[2024-01-13 Sat 13:36] =>  0:40
+CLOCK: [2024-01-13 Sat 12:15]--[2024-01-13 Sat 12:43] =>  0:28
+CLOCK: [2024-01-13 Sat 11:15]--[2024-01-13 Sat 12:01] =>  0:46
+CLOCK: [2024-01-13 Sat 10:03]--[2024-01-13 Sat 10:54] =>  0:51
+:END:
+- [X] do Github Setup
+- [ ] setup Organisation.org File
+  - [ ] send message in TG of how it works
+- [X] readjust Demi.md
+  - [X] rewrite Demi.md
+- [-] skratch out a Figma [7/8]
+  - [X] create a Frame
+  - [X] add colors
+  - [X] add Type Combi
+  - [X] clean up
+  - [X] create Input Field Component
+  - [X] create Button Component
+  - [-] generate a better logo
+    - [X] go for a die-cut sticker
+    - [X] download font
+    - [ ] create outline
+      - [ ] export
+      - [ ] importe, generate componetnt
+    - [ ] generate one
+  - [X] add Figma to Github
