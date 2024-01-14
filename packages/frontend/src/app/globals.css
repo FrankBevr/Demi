@@ -41,14 +41,25 @@
   border: 1px solid var(--grey-50);
 }
 
-    --primary: 263.4 70% 50.4%;
-    --primary-foreground: 210 20% 98%;
+.button-default {
+  color: var(--black-100);
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 5px;
+  border: 1px solid var(--black-100);
+  background-color: var(--white-100);
+  justify-content: center;
+  padding: 16px 34px;
+  font: 400 24px Paytone One, sans-serif;
+}
 
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
+.button-default:hover {
+  border-color: var(--grey-50);
+}
 
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
+.button-default:active {
+  border-color: var(--transparent);
+}
 
     --accent: 215 27.9% 16.9%;
     --accent-foreground: 210 20% 98%;
