@@ -1,16 +1,24 @@
 {
-  "name": "Incento",
+  "name": "demi",
   "version": "0.0.1",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/docs",
+    "packages/frontend",
+    "packages/contracts"
   ],
-  "devDependencies": {
-    "vitepress": "^1.0.0-rc.36"
-  },
   "scripts": {
-    "docs:dev": "npm run -w @incento/docs dev",
-    "docs:build": "npm run -w @incento/docs build",
-    "docs:preview": "npm run -w @incento/docs preview"
+    "docs:dev": "cd packages/docs && npm run dev",
+    "docs:build": "cd packages/docs && npm run build",
+    "docs:preview": "cd packages/docs && npm run preview",
+
+    "dev": "cd packages/frontend && npm run dev",
+    "build": "cd packages/frontend && npm run build",
+    "start": "cd packages/frontend && npm run start",
+
+    "node": "cd packages/contracts && npm run node",
+
+    "format": "cd packages/frontend && npm run format && cd ../contracts && npm run format",
+    "lint": "cd packages/frontend && npm run lint && cd ../contracts && npm run lint"
   }
 }
