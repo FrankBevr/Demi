@@ -71,6 +71,9 @@ CLOCK: [2024-01-14 Sun 08:32]--[2024-01-14 Sun 09:54] =>  1:22
 
 ** TODO [#B] Code - Landing Page
 :LOGBOOK:
+CLOCK: [2024-01-14 Sun 21:41]--[2024-01-14 Sun 21:48] =>  0:07
+CLOCK: [2024-01-14 Sun 21:24]--[2024-01-14 Sun 21:41] =>  0:17
+CLOCK: [2024-01-14 Sun 20:16]--[2024-01-14 Sun 20:51] =>  0:35
 CLOCK: [2024-01-14 Sun 15:27]--[2024-01-14 Sun 15:31] =>  0:04
 CLOCK: [2024-01-14 Sun 14:08]--[2024-01-14 Sun 15:22] =>  1:14
 CLOCK: [2024-01-14 Sun 12:03]--[2024-01-14 Sun 12:29] =>  0:26
@@ -81,8 +84,15 @@ CLOCK: [2024-01-14 Sun 10:24]--[2024-01-14 Sun 11:10] =>  0:46
 - [X] add inkathon! to current project somehow
 - [X] make package.json somehow work for docs
 - [X] make package.json somehow work for frontend
-- [X] make package.json somehow work for frontend
+- [X] make package.json somehow work for contracts
 - [X] make scripts work in root folder
 - [X] make everythin work from root
 - [X] commit that mess ina reasonable order ^^
-- [ ] add current state of Organisation.org
+- [X] add current state of Organisation.org
+- [X] call with Botond, ask about Validation AI Setup
+- [X] write quick notes, add to docs/notes
+- [X] rearange docs package, add notes, change logo
+- [ ] code input field
+- [ ] code button
+- [ ] code logo
+- [ ] code landing page
