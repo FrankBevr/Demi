@@ -73,15 +73,6 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  html {
-    @apply scroll-smooth antialiased;
-  }
-  body {
-    @apply bg-background font-sans text-foreground;
-    @apply flex h-screen min-h-screen flex-col;
-  }
+img {
+  width: 100%;
 }
