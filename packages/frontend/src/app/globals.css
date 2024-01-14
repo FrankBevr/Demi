@@ -1,49 +1,45 @@
+/*font-family: 'Paytone One', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+/*font-family: 'Overpass', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@500&display=swap');
+
+/*
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+*/
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
+:root {
+  --black-100: #1a1a1a;
+  --white-100: #ffffff;
+  --grey-100: #e6e6e6;
+  --grey-50: #808080;
+  --transparent: #00000000;
+}
 
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+.input-default {
+  color: var(--grey-50);
+  align-items: start;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--black-100);
+  justify-content: center;
+  padding: 20px 60px 20px 21px;
+  font: 400 14px Overpass, sans-serif;
+  background-color: var(--transparent);
+}
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
+.input-default:active,
+.input-default:focus {
+  background: var(--white-100);
+  color: var(--black-100);
+}
 
-    --primary: 262.1 83.3% 57.8%;
-    --primary-foreground: 210 20% 98%;
-
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 262.1 83.3% 57.8%;
-
-    --radius: 0.75rem;
-  }
-
-  .dark {
-    --background: 224 71.4% 4.1%;
-
-    --foreground: 210 20% 98%;
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
+.input-default:disabled {
+  background: var(--transparent);
+  border: 1px solid var(--grey-50);
+}
 
     --primary: 263.4 70% 50.4%;
     --primary-foreground: 210 20% 98%;
