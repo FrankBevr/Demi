@@ -71,6 +71,11 @@ CLOCK: [2024-01-14 Sun 08:32]--[2024-01-14 Sun 09:54] =>  1:22
 
 ** TODO [#B] Code - Landing Page
 :LOGBOOK:
+CLOCK: [2024-01-15 Mon 00:53]--[2024-01-15 Mon 00:58] =>  0:05
+CLOCK: [2024-01-15 Mon 00:37]--[2024-01-15 Mon 00:52] =>  0:15
+CLOCK: [2024-01-14 Sun 23:54]--[2024-01-15 Mon 00:32] =>  0:38
+CLOCK: [2024-01-14 Sun 23:35]--[2024-01-14 Sun 23:51] =>  0:16
+CLOCK: [2024-01-14 Sun 22:18]--[2024-01-14 Sun 23:14] =>  0:56
 CLOCK: [2024-01-14 Sun 21:41]--[2024-01-14 Sun 21:48] =>  0:07
 CLOCK: [2024-01-14 Sun 21:24]--[2024-01-14 Sun 21:41] =>  0:17
 CLOCK: [2024-01-14 Sun 20:16]--[2024-01-14 Sun 20:51] =>  0:35
@@ -92,7 +97,15 @@ CLOCK: [2024-01-14 Sun 10:24]--[2024-01-14 Sun 11:10] =>  0:46
 - [X] call with Botond, ask about Validation AI Setup
 - [X] write quick notes, add to docs/notes
 - [X] rearange docs package, add notes, change logo
-- [ ] code input field
-- [ ] code button
-- [ ] code logo
-- [ ] code landing page
+- [X] code input field
+  - [X] get rid of boilerplate
+  - [X] add input css in global.css
+  - [X] update aichat to gpt4
+  - [X] add state via css
+- [X] code button
+- [X] align button and input field
+- [X] code logo
+- [X] code landing page
+- [X] build
+- [X] commit progress
+- [ ] deploy draft (postpone, seems timeconsuming)
