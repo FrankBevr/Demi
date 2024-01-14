@@ -61,16 +61,23 @@
   border-color: var(--transparent);
 }
 
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
+.center-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 263.4 70% 50.4%;
-  }
+.margin-left-auto {
+  margin-left: auto;
 }
 
 img {
