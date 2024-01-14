@@ -19,9 +19,9 @@ CLOCK: [2024-01-12 Fri 13:15]--[2024-01-12 Fri 14:47] =>  1:32
   - [X] readjust Demi.md (ported)
   - [X] call it a day
 
-** TODO [#B] Bare Setup - Saturday
+** DONE [#B] Bare Setup - Saturday
 :LOGBOOK:
-CLOCK: [2024-01-13 Sat 14:10]
+CLOCK: [2024-01-13 Sat 14:10]--[2024-01-13 Sat 14:59] =>  0:49
 CLOCK: [2024-01-13 Sat 13:48]--[2024-01-13 Sat 14:10] =>  0:22
 CLOCK: [2024-01-13 Sat 12:56]--[2024-01-13 Sat 13:36] =>  0:40
 CLOCK: [2024-01-13 Sat 12:15]--[2024-01-13 Sat 12:43] =>  0:28
@@ -29,22 +29,60 @@ CLOCK: [2024-01-13 Sat 11:15]--[2024-01-13 Sat 12:01] =>  0:46
 CLOCK: [2024-01-13 Sat 10:03]--[2024-01-13 Sat 10:54] =>  0:51
 :END:
 - [X] do Github Setup
-- [ ] setup Organisation.org File
-  - [ ] send message in TG of how it works
+- [X] setup Organisation.org File
+  - [X] send message in TG of how it works
 - [X] readjust Demi.md
   - [X] rewrite Demi.md
-- [-] skratch out a Figma [7/8]
+- [X] skratch out a Figma [8/8]
   - [X] create a Frame
   - [X] add colors
   - [X] add Type Combi
   - [X] clean up
   - [X] create Input Field Component
   - [X] create Button Component
-  - [-] generate a better logo
+  - [X] generate a better logo(ported)
     - [X] go for a die-cut sticker
     - [X] download font
-    - [ ] create outline
-      - [ ] export
-      - [ ] importe, generate componetnt
-    - [ ] generate one
+    - [X] create outline
+      - [X] export
+      - [X] importe, generate componetnt
+    - [X] generate one
   - [X] add Figma to Github
+
+** DONE [#B] Design - Sunday
+:LOGBOOK:
+CLOCK: [2024-01-14 Sun 10:05]--[2024-01-14 Sun 10:22] =>  0:17
+CLOCK: [2024-01-14 Sun 08:32]--[2024-01-14 Sun 09:54] =>  1:22
+:END:
+- [X] generate a better logo(ported)
+  - [X] go for a die-cut sticker
+  - [X] download font
+  - [X] create outline
+    - [X] export
+    - [X] importe, generate componetnt
+  - [X] generate one
+- [X] setup up export format
+- [X] add Cover
+- [X] add Intro
+- [X] refine Logo - Inspiration
+- [X] create Landing Page, which current Design System
+- [X] clean up
+- [X] export, add to Github
+
+** TODO [#B] Code - Landing Page
+:LOGBOOK:
+CLOCK: [2024-01-14 Sun 15:27]--[2024-01-14 Sun 15:31] =>  0:04
+CLOCK: [2024-01-14 Sun 14:08]--[2024-01-14 Sun 15:22] =>  1:14
+CLOCK: [2024-01-14 Sun 12:03]--[2024-01-14 Sun 12:29] =>  0:26
+CLOCK: [2024-01-14 Sun 11:17]--[2024-01-14 Sun 11:59] =>  0:42
+CLOCK: [2024-01-14 Sun 10:24]--[2024-01-14 Sun 11:10] =>  0:46
+:END:
+
+- [X] add inkathon! to current project somehow
+- [X] make package.json somehow work for docs
+- [X] make package.json somehow work for frontend
+- [X] make package.json somehow work for frontend
+- [X] make scripts work in root folder
+- [X] make everythin work from root
+- [X] commit that mess ina reasonable order ^^
+- [ ] add current state of Organisation.org
