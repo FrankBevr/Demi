@@ -17,6 +17,11 @@
   --transparent: #00000000;
 }
 
+body,
+html {
+  background-color: var(--grey-100);
+}
+
 h1 {
   font-family: Paytone One;
   font-size: 36px;
