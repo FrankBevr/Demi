@@ -2,7 +2,7 @@
 #+COLUMNS: %50ITEM(Task) %7TODO %14CLOCKSUM(Clock)
 
 * Organisation
-** DONE [#A] Call - Friday [2/2]
+** DONE [#A] Call - Friday - 1:45 [2/2]
 :LOGBOOK:
 CLOCK: [2024-01-12 Fri 15:03]--[2024-01-12 Fri 15:16] =>  0:13
 CLOCK: [2024-01-12 Fri 13:15]--[2024-01-12 Fri 14:47] =>  1:32
@@ -19,7 +19,7 @@ CLOCK: [2024-01-12 Fri 13:15]--[2024-01-12 Fri 14:47] =>  1:32
   - [X] readjust Demi.md (ported)
   - [X] call it a day
 
-** DONE [#B] Bare Setup - Saturday
+** DONE [#B] Bare Setup - Saturday - 3:56 [4/4]
 :LOGBOOK:
 CLOCK: [2024-01-13 Sat 14:10]--[2024-01-13 Sat 14:59] =>  0:49
 CLOCK: [2024-01-13 Sat 13:48]--[2024-01-13 Sat 14:10] =>  0:22
@@ -49,7 +49,7 @@ CLOCK: [2024-01-13 Sat 10:03]--[2024-01-13 Sat 10:54] =>  0:51
     - [X] generate one
   - [X] add Figma to Github
 
-** DONE [#B] Design - Sunday
+** DONE [#B] Design - Sunday - 1:39 [8/8]
 :LOGBOOK:
 CLOCK: [2024-01-14 Sun 10:05]--[2024-01-14 Sun 10:22] =>  0:17
 CLOCK: [2024-01-14 Sun 08:32]--[2024-01-14 Sun 09:54] =>  1:22
@@ -69,7 +69,7 @@ CLOCK: [2024-01-14 Sun 08:32]--[2024-01-14 Sun 09:54] =>  1:22
 - [X] clean up
 - [X] export, add to Github
 
-** DONE [#B] Code - Landing Page - Sunday
+** DONE [#B] Code - Landing Page - Sunday - 6:21 [19/19]
 :LOGBOOK:
 CLOCK: [2024-01-15 Mon 00:53]--[2024-01-15 Mon 00:58] =>  0:05
 CLOCK: [2024-01-15 Mon 00:37]--[2024-01-15 Mon 00:52] =>  0:15
@@ -108,7 +108,7 @@ CLOCK: [2024-01-14 Sun 10:24]--[2024-01-14 Sun 11:10] =>  0:46
 - [X] build
 - [X] commit progress
 - [X] deploy draft (postpone, seems timeconsuming)
-** DONE CODE - Smart Contract Draft - Monday
+** DONE CODE - Smart Contract Draft - Monday - 6:20 [10/10]
 :LOGBOOK:
 CLOCK: [2024-01-15 Mon 19:15]--[2024-01-15 Mon 20:05] =>  0:50
 CLOCK: [2024-01-15 Mon 17:36]--[2024-01-15 Mon 17:57] =>  0:21
@@ -163,7 +163,7 @@ CLOCK: [2024-01-15 Mon 10:10]--[2024-01-15 Mon 10:22] =>  0:12
               - [X] import alice
             - [X] w.i.p. (ported)
 
-** TODO [#A] CODE - Button Clicky - Tuesday
+** TODO [#A] CODE - Button Clicky - Tuesday - 1:47 [5/6]
 :LOGBOOK:
 CLOCK: [2024-01-16 Tue 12:50]--[2024-01-16 Tue 13:05] =>  0:15
 CLOCK: [2024-01-16 Tue 12:19]--[2024-01-16 Tue 12:47] =>  0:28
@@ -176,4 +176,4 @@ CLOCK: [2024-01-16 Tue 10:51]--[2024-01-16 Tue 11:13] =>  0:22
 - [X] import Alice in Wallet
 - [X] create new contract for testing
 - [X] read from contract and display it on Button Click
-- [ ]  write to contract on Button Click
+- [X]  write to contract on Button Click
