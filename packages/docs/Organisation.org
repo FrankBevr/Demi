@@ -69,7 +69,7 @@ CLOCK: [2024-01-14 Sun 08:32]--[2024-01-14 Sun 09:54] =>  1:22
 - [X] clean up
 - [X] export, add to Github
 
-** TODO [#B] Code - Landing Page
+** DONE [#B] Code - Landing Page - Sunday
 :LOGBOOK:
 CLOCK: [2024-01-15 Mon 00:53]--[2024-01-15 Mon 00:58] =>  0:05
 CLOCK: [2024-01-15 Mon 00:37]--[2024-01-15 Mon 00:52] =>  0:15
@@ -85,7 +85,6 @@ CLOCK: [2024-01-14 Sun 12:03]--[2024-01-14 Sun 12:29] =>  0:26
 CLOCK: [2024-01-14 Sun 11:17]--[2024-01-14 Sun 11:59] =>  0:42
 CLOCK: [2024-01-14 Sun 10:24]--[2024-01-14 Sun 11:10] =>  0:46
 :END:
-
 - [X] add inkathon! to current project somehow
 - [X] make package.json somehow work for docs
 - [X] make package.json somehow work for frontend
@@ -108,4 +107,73 @@ CLOCK: [2024-01-14 Sun 10:24]--[2024-01-14 Sun 11:10] =>  0:46
 - [X] code landing page
 - [X] build
 - [X] commit progress
-- [ ] deploy draft (postpone, seems timeconsuming)
+- [X] deploy draft (postpone, seems timeconsuming)
+** DONE CODE - Smart Contract Draft - Monday
+:LOGBOOK:
+CLOCK: [2024-01-15 Mon 19:15]--[2024-01-15 Mon 20:05] =>  0:50
+CLOCK: [2024-01-15 Mon 17:36]--[2024-01-15 Mon 17:57] =>  0:21
+CLOCK: [2024-01-15 Mon 16:43]--[2024-01-15 Mon 17:13] =>  0:30
+CLOCK: [2024-01-15 Mon 16:24]--[2024-01-15 Mon 16:41] =>  0:17
+CLOCK: [2024-01-15 Mon 16:07]--[2024-01-15 Mon 16:20] =>  0:13
+CLOCK: [2024-01-15 Mon 15:45]--[2024-01-15 Mon 16:07] =>  0:22
+CLOCK: [2024-01-15 Mon 15:23]--[2024-01-15 Mon 15:29] =>  0:06
+CLOCK: [2024-01-15 Mon 13:36]--[2024-01-15 Mon 14:44] =>  1:08
+CLOCK: [2024-01-15 Mon 12:54]--[2024-01-15 Mon 13:32] =>  0:38
+CLOCK: [2024-01-15 Mon 12:06]--[2024-01-15 Mon 12:32] =>  0:26
+CLOCK: [2024-01-15 Mon 11:35]--[2024-01-15 Mon 12:06] =>  0:31
+CLOCK: [2024-01-15 Mon 10:49]--[2024-01-15 Mon 11:11] =>  0:22
+CLOCK: [2024-01-15 Mon 10:37]--[2024-01-15 Mon 10:48] =>  0:11
+CLOCK: [2024-01-15 Mon 10:24]--[2024-01-15 Mon 10:37] =>  0:13
+CLOCK: [2024-01-15 Mon 10:10]--[2024-01-15 Mon 10:22] =>  0:12
+:END:
+- [X] deploy draft (postpone, seems timeconsuming)
+- [X] update doom
+- [X] try netlify deploy
+- [X] setup netlify config
+- [X] deploy on frandemi.netlify.app
+- [X] Write stupid contract and compile it
+- [X] rename thingies
+- [X] deploy on local
+- [X] test via cli
+- [X] call node and validator in frontend
+  - [X] create ContractOverview Component
+  - [X] add style for h1, h2, h3, p
+  - [X] change background color of page
+  - [X] create Design for ContractOverview
+    - [X] create Variable Component
+    - [X] create Function Component
+    - [X] code Variable Component
+    - [X] code Function Component
+    - [X] combine it in ContractOverview
+    - [X] fix css
+    - [X] make it reusable
+      - [X] make FunctionComp reusable
+      - [X] make VariableComp reusable
+      - [X] make ContractOverview reusable
+    - [X] add it nicey to Main Page
+    - [X] change favicon
+    - [X] participate in Aleph Hack Call
+    - [X] make FunctionComp clicky
+      - [X] add Custon Contract
+        - [X] figure out how deployment works with current setup
+          - [X] start a from the template, figure it out
+            - [X] git clone
+            - [X] get it running
+            - [X] switch to local
+              - [X] import alice
+            - [X] w.i.p. (ported)
+
+** TODO [#A] CODE - Button Clicky - Tuesday
+:LOGBOOK:
+CLOCK: [2024-01-16 Tue 12:50]--[2024-01-16 Tue 13:05] =>  0:15
+CLOCK: [2024-01-16 Tue 12:19]--[2024-01-16 Tue 12:47] =>  0:28
+CLOCK: [2024-01-16 Tue 11:46]--[2024-01-16 Tue 12:13] =>  0:27
+CLOCK: [2024-01-16 Tue 11:27]--[2024-01-16 Tue 11:42] =>  0:15
+CLOCK: [2024-01-16 Tue 10:51]--[2024-01-16 Tue 11:13] =>  0:22
+:END:
+- [ ] figure out how to make contracts deployment.ts file
+- [X] explore bare inkathon workflow
+- [X] import Alice in Wallet
+- [X] create new contract for testing
+- [X] read from contract and display it on Button Click
+- [ ]  write to contract on Button Click
