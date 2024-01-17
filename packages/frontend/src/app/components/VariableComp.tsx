@@ -1,14 +1,11 @@
-
 interface VariableCompProp {
-  name: string
+  name: string;
   description: string;
 }
-const VariableComp = (
-  {
-    name = "Node",
-    description = "Nodes store all participating ai Nodes",
-  }: VariableCompProp
-) => {
+const VariableComp = ({
+  name = "Node",
+  description = "Nodes store all participating ai Nodes",
+}: VariableCompProp) => {
   return (
     <>
       <div>
@@ -18,8 +15,7 @@ const VariableComp = (
         <p>Nodes store all participating ai Nodes</p>
       </div>
     </>
-  )
+  );
+};
 
-}
-
-export default VariableComp
+export default VariableComp;

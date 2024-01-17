@@ -1,5 +1,9 @@
 const Logo = () => {
-  return <div><img src="/images/Logo-black.png" /></div>
-}
+  return (
+    <div>
+      <img src="/images/Logo-black.png" />
+    </div>
+  );
+};
 
-export default Logo
+export default Logo;

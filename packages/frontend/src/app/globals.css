@@ -1,7 +1,7 @@
 /*font-family: 'Paytone One', sans-serif;*/
-@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap");
 /*font-family: 'Overpass', sans-serif;*/
-@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@500&display=swap");
 
 /*
 @tailwind base;
@@ -77,7 +77,9 @@ p {
   border: 1px solid var(--black-100);
   justify-content: center;
   padding: 20px 60px 20px 21px;
-  font: 400 14px Overpass, sans-serif;
+  font:
+    400 14px Overpass,
+    sans-serif;
   background-color: var(--transparent);
 }
 
@@ -101,7 +103,9 @@ p {
   background-color: var(--white-100);
   justify-content: center;
   padding: 16px 34px;
-  font: 400 24px Paytone One, sans-serif;
+  font:
+    400 24px Paytone One,
+    sans-serif;
 }
 
 .button-default:hover {
@@ -149,5 +153,5 @@ img {
   padding: 5vw;
   margin: 5vw;
   border-radius: 15px;
-  border: solid 1px var(--black-100)
+  border: solid 1px var(--black-100);
 }

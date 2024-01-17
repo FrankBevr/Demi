@@ -4,11 +4,7 @@ interface InputProps {
 
 const Input = ({ placeholder = "Placeholder" }: InputProps) => {
   return (
-    <input
-      name="input"
-      className="input-default"
-      placeholder={placeholder}
-    />
-  )
-}
-export default Input 
+    <input name="input" className="input-default" placeholder={placeholder} />
+  );
+};
+export default Input;
