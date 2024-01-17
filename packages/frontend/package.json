@@ -8,15 +8,17 @@
     "node": "cd ../contracts && npm run node",
     "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production next start",
-
     "type-check": "tsc --pretty --noEmit",
     "format": "npx prettier --write ./src ",
     "format:check": "npx prettier --check ./src ",
     "lint": "npx eslint --fix ./src",
-    "lint:check": "eslint ./src"
+    "lint:check": "eslint ./src",
+
+    "sync-types": "typesync"
   },
   "dependencies": {
     "@inkathon/contracts": "../contracts",
+
     "@azns/resolver-core": "^1.6.0",
     "@azns/resolver-react": "^1.6.0",
     "@hookform/resolvers": "^3.3.4",
@@ -50,6 +52,7 @@
     "spinners-react": "^1.0.7",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
+    "typesync": "^0.12.1",
     "use-async-effect": "^2.2.7",
     "zod": "^3.22.4"
   },
