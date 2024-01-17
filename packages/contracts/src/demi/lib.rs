@@ -13,7 +13,15 @@ mod demi {
         pub fn new() -> Self {
             Self {
                 validators: AccountId::from([0xFF as u8; 32]),
-                nodes:  AccountId::from([0xFF as u8; 32]),
+                nodes: AccountId::from([0xFF as u8; 32]),
+            }
+        }
+
+        #[ink(constructor)]
+        pub fn default() -> Self {
+            Self {
+                validators: AccountId::from([0xFF as u8; 32]),
+                nodes: AccountId::from([0xFF as u8; 32]),
             }
         }
 

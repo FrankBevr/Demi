@@ -1,6 +1,6 @@
 {
   "source": {
-    "hash": "0xd5ff6b09ed74e48d9fc03ab1c3c55b7ddcad37c1223a9c1109566504db5ae707",
+    "hash": "0x69ccaba01b9457e3c91470a4da2b43f14d1c8b7637dfec083aa3226e2869e2df",
     "language": "ink! 4.3.0",
     "compiler": "rustc 1.73.0",
     "build_info": {
@@ -36,6 +36,21 @@
           "type": 3
         },
         "selector": "0x9bae9d5e"
+      },
+      {
+        "args": [],
+        "default": false,
+        "docs": [],
+        "label": "default",
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink_primitives",
+            "ConstructorResult"
+          ],
+          "type": 3
+        },
+        "selector": "0xed4b9d1b"
       }
     ],
     "docs": [],

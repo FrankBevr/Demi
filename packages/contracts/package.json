@@ -14,8 +14,7 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint . --fix",
-    "script": "f() { tsx ./scripts/$1; }; f \"$@\"",
-    "deploy": "npm run script deploy"
+    "script": "f() { tsx ./scripts/$1; }; f \"$@\""
   },
   "devDependencies": {
     "@polkadot/api": "^10.11.2",
