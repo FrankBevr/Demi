@@ -163,7 +163,7 @@ CLOCK: [2024-01-15 Mon 10:10]--[2024-01-15 Mon 10:22] =>  0:12
               - [X] import alice
             - [X] w.i.p. (ported)
 
-** TODO [#A] CODE - Button Clicky - Tuesday - 1:47 [5/6]
+** TODO [#A] CODE - Button Clicky - Tuesday - 1:47 [6/6]
 :LOGBOOK:
 CLOCK: [2024-01-16 Tue 12:50]--[2024-01-16 Tue 13:05] =>  0:15
 CLOCK: [2024-01-16 Tue 12:19]--[2024-01-16 Tue 12:47] =>  0:28
@@ -171,9 +171,31 @@ CLOCK: [2024-01-16 Tue 11:46]--[2024-01-16 Tue 12:13] =>  0:27
 CLOCK: [2024-01-16 Tue 11:27]--[2024-01-16 Tue 11:42] =>  0:15
 CLOCK: [2024-01-16 Tue 10:51]--[2024-01-16 Tue 11:13] =>  0:22
 :END:
-- [ ] figure out how to make contracts deployment.ts file
+- [X] figure out how to make contracts deployment.ts file (ported)
 - [X] explore bare inkathon workflow
 - [X] import Alice in Wallet
 - [X] create new contract for testing
 - [X] read from contract and display it on Button Click
-- [X]  write to contract on Button Click
+- [X] write to contract on Button Click (ported)
+
+** TODO [#A] CODE - Button Clicky - Wednesday [9/10]
+:LOGBOOK:
+CLOCK: [2024-01-17 Wed 14:04]--[2024-01-17 Wed 14:13] =>  0:09
+CLOCK: [2024-01-17 Wed 13:29]--[2024-01-17 Wed 14:03] =>  0:34
+CLOCK: [2024-01-17 Wed 12:32]--[2024-01-17 Wed 13:16] =>  0:44
+CLOCK: [2024-01-17 Wed 11:41]--[2024-01-17 Wed 12:14] =>  0:33
+CLOCK: [2024-01-17 Wed 11:03]--[2024-01-17 Wed 11:34] =>  0:31
+:END:
+
+- [X] write to contract on Button Click (ported)
+- [X] figure out how to make contracts deployment.ts file (ported)
+- [X] handle github 2fa without phone
+- [X] add plantuml to docs
+- [X] add tasklist to docs
+- [X] understand workflow and what happens where
+- [X] make button clicky in boilerplate
+- [X] try to fix script in Demi
+  - [X] rewrite contracts scripts and make it works and get deployment
+  - [X] rewrite frontend to make it work
+- [X] commit it nicley
+- [ ] add all current functions.
