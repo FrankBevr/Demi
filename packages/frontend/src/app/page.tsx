@@ -9,23 +9,28 @@ import {
   useInkathon,
   useRegisteredContract,
 } from "@scio-labs/use-inkathon";
-import { button, useControls } from "leva";
+import { LevaInputs, button, useControls } from "leva";
 import toast from "react-hot-toast";
 
 import Button from "./components/Button";
 import Input from "./components/Input";
 import Logo from "./components/Logo";
+import { contractTxWithToast } from "@/utils/contract-tx-with-toast";
 
 export default function HomePage() {
   const { error } = useInkathon();
-  const { api } = useInkathon();
+  const { api, activeAccount } = useInkathon();
   const { contract } = useRegisteredContract(ContractIds.Demi);
 
+  /*Toast occuring Error*/
   useEffect(() => {
     if (!error) return;
     toast.error(error.message);
   }, [error]);
 
+  /*************************************/
+  /*Handling Read Functions in Debug UI*/
+  /*************************************/
   const [owner, setOwner] = useControls(() => ({
     onwerName: {
       label: "owner",
@@ -103,7 +108,41 @@ export default function HomePage() {
     getNode()
   }, [getOwner, getValidator, getNode, contract, api]);
 
+  /**************************************/
+  /*Handling Write Functions in Debug UI*/
+  /**************************************/
 
+  /**************************************/
+  /*BOTOND BOTOND BOTOND BOTOND BOTOND  */
+  /**************************************/
+
+  // work in progress
+
+  // const [newOwner,setNewOwner ] = useControls(() => ({
+  //   newOwner: {
+  //     label: "newOwner",
+  //     value: ".....",
+  //   },
+  //   getNewNodeOwner: button((abc) => setNewNodeOwner(abc.arguments)),
+  // }));
+
+  const setNewNodeOwner = useCallback(async () => {
+    if (!contract || !api) return;
+    await contractTxWithToast(
+      api,
+      activeAccount!.address,
+      contract,
+      "set_owner",
+      {},
+      [],
+    );
+  }, [contract, api]);
+
+  // work in progress
+
+  /**************************************/
+  /*BOTOND BOTOND BOTOND BOTOND BOTOND  */
+  /**************************************/
   return (
     <>
       {api && contract && (
