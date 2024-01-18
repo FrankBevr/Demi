@@ -1,6 +1,6 @@
 {
   "source": {
-    "hash": "0xc4e36e703e8f68f25b18b2e3abbedb40c983c48d09db587a34ce2badc7b95457",
+    "hash": "0x439a73e9116d53d76ca41f1291b8c554f2fb978514de99d920399e7f7599d6b4",
     "language": "ink! 4.3.0",
     "compiler": "rustc 1.73.0",
     "build_info": {
@@ -133,7 +133,7 @@
         ],
         "default": false,
         "docs": [],
-        "label": "change_owner",
+        "label": "set_owner",
         "mutates": true,
         "payable": false,
         "returnType": {
@@ -143,7 +143,7 @@
           ],
           "type": 3
         },
-        "selector": "0x015eeeaf"
+        "selector": "0x367facd6"
       },
       {
         "args": [],
@@ -175,7 +175,7 @@
         ],
         "default": false,
         "docs": [],
-        "label": "change_validator",
+        "label": "set_validator",
         "mutates": true,
         "payable": false,
         "returnType": {
@@ -185,23 +185,7 @@
           ],
           "type": 3
         },
-        "selector": "0xb70af759"
-      },
-      {
-        "args": [],
-        "default": false,
-        "docs": [],
-        "label": "add_node",
-        "mutates": true,
-        "payable": false,
-        "returnType": {
-          "displayName": [
-            "ink",
-            "MessageResult"
-          ],
-          "type": 3
-        },
-        "selector": "0x025a270e"
+        "selector": "0x297766e9"
       },
       {
         "args": [],
@@ -218,6 +202,22 @@
           "type": 6
         },
         "selector": "0x60d47579"
+      },
+      {
+        "args": [],
+        "default": false,
+        "docs": [],
+        "label": "set_node",
+        "mutates": true,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 3
+        },
+        "selector": "0x70ae412b"
       }
     ]
   },

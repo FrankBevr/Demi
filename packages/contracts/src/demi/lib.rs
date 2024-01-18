@@ -35,7 +35,7 @@ mod demi {
         }
 
         #[ink(message)]
-        pub fn change_owner(&mut self, new_owner: AccountId) {
+        pub fn set_owner(&mut self, new_owner: AccountId) {
             if self.env().caller() == self.owner {
                 self.owner = new_owner;
             }
@@ -50,7 +50,7 @@ mod demi {
         }
 
         #[ink(message)]
-        pub fn change_validator(&mut self, new_validator: AccountId) {
+        pub fn set_validator(&mut self, new_validator: AccountId) {
             if self.env().caller() == self.validator {
                 self.validator = new_validator;
             }
@@ -60,13 +60,13 @@ mod demi {
         /* NODES */
         /*********/
         #[ink(message)]
-        pub fn add_node(&mut self) {
-            self.nodes = self.env().caller();
+        pub fn get_node(&self) -> AccountId {
+            self.nodes.clone()
         }
 
         #[ink(message)]
-        pub fn get_node(&self) -> AccountId {
-            self.nodes.clone()
+        pub fn set_node(&mut self) {
+            self.nodes = self.env().caller();
         }
     }
 }
