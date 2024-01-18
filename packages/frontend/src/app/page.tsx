@@ -1,12 +1,20 @@
 "use client";
-import { useEffect, useState } from "react";
-import { contractQuery, decodeOutput, useInkathon, useRegisteredContract } from "@scio-labs/use-inkathon";
+
+import { useCallback, useEffect, useState } from "react";
+
+import { ContractIds } from "@/deployments/deployments";
+import {
+  contractQuery,
+  decodeOutput,
+  useInkathon,
+  useRegisteredContract,
+} from "@scio-labs/use-inkathon";
+import { button, useControls } from "leva";
+import toast from "react-hot-toast";
+
 import Button from "./components/Button";
 import Input from "./components/Input";
 import Logo from "./components/Logo";
-import { button, useControls } from "leva";
-import toast from "react-hot-toast";
-import { ContractIds } from "@/deployments/deployments";
 
 export default function HomePage() {
   const { error } = useInkathon();
@@ -18,35 +26,83 @@ export default function HomePage() {
     toast.error(error.message);
   }, [error]);
 
-  useEffect(() => {
-    if (contract && api) {
-      getNode();
-    }
-  }, [contract, api]);
-
-
   const [owner, setOwner] = useControls(() => ({
-    name: {
+    onwerName: {
       label: "owner",
       value: "5Hr.....",
       onChange: (c) => {
-        setOwner({ name: c });
+        setOwner({ onwerName: c });
+        toast.success("Owner changed");
       },
     },
+    getOwner: button(() => getOwner()),
   }));
 
-  useControls(
-    {
-      "getOwner": button(() => getNode())
-    }
-  );
+  const [validator, setValidator] = useControls(() => ({
+    validatorName: {
+      label: "validator",
+      value: "5Hr.....",
+      onChange: (c) => {
+        setValidator({ validatorName: c });
+        toast.success("Validator changed");
+      },
+    },
+    getValidator: button(() => getValidator()),
+  }));
 
-  const getNode = async () => {
+  const [node, setNode] = useControls(() => ({
+    nodeName: {
+      label: "node",
+      value: "5Hr.....",
+      onChange: (c) => {
+        setNode({ nodeName: c });
+        toast.success("Node changed");
+      },
+    },
+    getNode: button(() => getNode()),
+  }));
+
+
+  const getOwner = useCallback(async () => {
+    if (!contract || !api) return;
+    const result = await contractQuery(api, "", contract, "get_owner");
+    const { output }: { output: boolean } = decodeOutput(
+      result,
+      contract,
+      "get_owner",
+    );
+    setOwner({ onwerName: output.toString() });
+  }, [contract, api]);
+
+  const getValidator = useCallback(async () => {
+    if (!contract || !api) return;
+    const result = await contractQuery(api, "", contract, "get_validator");
+    const { output }: { output: boolean } = decodeOutput(
+      result,
+      contract,
+      "get_validator",
+    );
+    setValidator({ validatorName: output.toString() });
+  }, [contract, api]);
+
+  const getNode = useCallback(async () => {
     if (!contract || !api) return;
     const result = await contractQuery(api, "", contract, "get_node");
-    const { output }: { output: boolean } = decodeOutput(result, contract, "get_node");
-    setOwner({ name: output.toString() })
-  };
+    const { output }: { output: boolean } = decodeOutput(
+
+      result,
+      contract,
+      "get_node",
+    );
+    setNode({ nodeName: output.toString() });
+  }, [contract, api]);
+
+  useEffect(() => {
+    getOwner();
+    getValidator()
+    getNode()
+  }, [getOwner, getValidator, getNode, contract, api]);
+
 
   return (
     <>
@@ -63,7 +119,7 @@ export default function HomePage() {
           </div>
         </>
       )}
-      {!api || !contract && <div></div>}
+      {!api || (!contract && <div></div>)}
     </>
   );
 }
