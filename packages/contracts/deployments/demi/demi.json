@@ -1,6 +1,6 @@
 {
   "source": {
-    "hash": "0x69ccaba01b9457e3c91470a4da2b43f14d1c8b7637dfec083aa3226e2869e2df",
+    "hash": "0xc4e36e703e8f68f25b18b2e3abbedb40c983c48d09db587a34ce2badc7b95457",
     "language": "ink! 4.3.0",
     "compiler": "rustc 1.73.0",
     "build_info": {
@@ -36,21 +36,6 @@
           "type": 3
         },
         "selector": "0x9bae9d5e"
-      },
-      {
-        "args": [],
-        "default": false,
-        "docs": [],
-        "label": "default",
-        "payable": false,
-        "returnType": {
-          "displayName": [
-            "ink_primitives",
-            "ConstructorResult"
-          ],
-          "type": 3
-        },
-        "selector": "0xed4b9d1b"
       }
     ],
     "docs": [],
@@ -106,7 +91,7 @@
         "args": [],
         "default": false,
         "docs": [],
-        "label": "add_validator",
+        "label": "init",
         "mutates": true,
         "payable": false,
         "returnType": {
@@ -116,13 +101,39 @@
           ],
           "type": 3
         },
-        "selector": "0x82f48fa6"
+        "selector": "0x44d6441f"
       },
       {
         "args": [],
         "default": false,
         "docs": [],
-        "label": "add_node",
+        "label": "get_owner",
+        "mutates": false,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 6
+        },
+        "selector": "0x07fcd0b1"
+      },
+      {
+        "args": [
+          {
+            "label": "new_owner",
+            "type": {
+              "displayName": [
+                "AccountId"
+              ],
+              "type": 0
+            }
+          }
+        ],
+        "default": false,
+        "docs": [],
+        "label": "change_owner",
         "mutates": true,
         "payable": false,
         "returnType": {
@@ -132,7 +143,7 @@
           ],
           "type": 3
         },
-        "selector": "0x025a270e"
+        "selector": "0x015eeeaf"
       },
       {
         "args": [],
@@ -149,6 +160,48 @@
           "type": 6
         },
         "selector": "0x35219e73"
+      },
+      {
+        "args": [
+          {
+            "label": "new_validator",
+            "type": {
+              "displayName": [
+                "AccountId"
+              ],
+              "type": 0
+            }
+          }
+        ],
+        "default": false,
+        "docs": [],
+        "label": "change_validator",
+        "mutates": true,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 3
+        },
+        "selector": "0xb70af759"
+      },
+      {
+        "args": [],
+        "default": false,
+        "docs": [],
+        "label": "add_node",
+        "mutates": true,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 3
+        },
+        "selector": "0x025a270e"
       },
       {
         "args": [],
@@ -180,7 +233,16 @@
                   "ty": 0
                 }
               },
-              "name": "validators"
+              "name": "owner"
+            },
+            {
+              "layout": {
+                "leaf": {
+                  "key": "0x00000000",
+                  "ty": 0
+                }
+              },
+              "name": "validator"
             },
             {
               "layout": {

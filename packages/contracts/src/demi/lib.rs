@@ -4,7 +4,8 @@
 mod demi {
     #[ink(storage)]
     pub struct Demi {
-        validators: AccountId,
+        owner: AccountId,
+        validator: AccountId,
         nodes: AccountId,
     }
 
@@ -12,32 +13,55 @@ mod demi {
         #[ink(constructor)]
         pub fn new() -> Self {
             Self {
-                validators: AccountId::from([0xFF as u8; 32]),
-                nodes: AccountId::from([0xFF as u8; 32]),
-            }
-        }
-
-        #[ink(constructor)]
-        pub fn default() -> Self {
-            Self {
-                validators: AccountId::from([0xFF as u8; 32]),
+                owner: AccountId::from([0xFF as u8; 32]),
+                validator: AccountId::from([0xFF as u8; 32]),
                 nodes: AccountId::from([0xFF as u8; 32]),
             }
         }
 
         #[ink(message)]
-        pub fn add_validator(&mut self) {
-            self.validators = self.env().caller();
+        pub fn init(&mut self) {
+            if self.owner == AccountId::from([0x0; 32]) {
+                self.owner = Self::env().caller();
+            }
         }
 
+        /*********/
+        /* OWNER */
+        /*********/
+        #[ink(message)]
+        pub fn get_owner(&self) -> AccountId {
+            self.owner.clone()
+        }
+
+        #[ink(message)]
+        pub fn change_owner(&mut self, new_owner: AccountId) {
+            if self.env().caller() == self.owner {
+                self.owner = new_owner;
+            }
+        }
+
+        /*************/
+        /* VALIDATOR */
+        /*************/
+        #[ink(message)]
+        pub fn get_validator(&self) -> AccountId {
+            self.validator.clone()
+        }
+
+        #[ink(message)]
+        pub fn change_validator(&mut self, new_validator: AccountId) {
+            if self.env().caller() == self.validator {
+                self.validator = new_validator;
+            }
+        }
+
+        /*********/
+        /* NODES */
+        /*********/
         #[ink(message)]
         pub fn add_node(&mut self) {
             self.nodes = self.env().caller();
-        }
-
-        #[ink(message)]
-        pub fn get_validator(&self) -> AccountId {
-            self.validators.clone()
         }
 
         #[ink(message)]
