@@ -32,7 +32,7 @@ export default function HomePage() {
   /*************************************/
   /*Handling Read Functions in Debug UI*/
   /*************************************/
-  const [owner, setOwner] = useControls(() => ({
+  const [owner, setOwner] = useControls("READ", () => ({
     onwerName: {
       label: "owner",
       value: "5Hr.....",
@@ -45,7 +45,7 @@ export default function HomePage() {
     getOwner: button(() => getOwner()),
   }));
 
-  const [validator, setValidator] = useControls(() => ({
+  const [validator, setValidator] = useControls("READ", () => ({
     validatorName: {
       label: "validator",
       value: "5Hr.....",
@@ -58,7 +58,7 @@ export default function HomePage() {
     getValidator: button(() => getValidator()),
   }));
 
-  const [node, setNode] = useControls(() => ({
+  const [node, setNode] = useControls("READ", () => ({
     nodeName: {
       label: "node",
       value: "5Hr.....",
@@ -115,7 +115,7 @@ export default function HomePage() {
   /*Handling Write Functions in Debug UI*/
   /**************************************/
 
-  const [] = useControls(() => ({
+  useControls("WRITE", () => ({
     callInit: button(() => {
       callInit()
     }
@@ -139,10 +139,14 @@ export default function HomePage() {
     }
   }, [contract, api]);
 
-  const [newOwner, setNewOwner] = useControls(() => ({
+  const [newOwner, setNewOwner] = useControls("WRITE", () => ({
     newOwner: {
       label: "newOwner",
       value: ".....",
+      onChange: (c) => {
+        setNewOwner({ newOwner: c })
+      },
+      transient: false,
     },
     setNewNodeOwner: button(() => {
       setNewNodeOwner()
@@ -153,29 +157,34 @@ export default function HomePage() {
   const setNewNodeOwner = useCallback(async () => {
     if (!contract || !api) return;
     try {
-      const addressAsU8a = decodeAddress(activeAccount!.address); // convert address to u8a
-      const { } = await contractTxWithToast(
-        api,
-        activeAccount!.address,
-        contract,
-        "set_owner",
-        {},
-        [addressAsU8a], // pass the u8a address
-      );
-      const result = await contractQuery(api, "", contract, "get_owner");
-      const { output }: { output: boolean } = decodeOutput(
-        result,
-        contract,
-        "get_owner",
-      );
-      setOwner({ onwerName: output.toString() });
-      console.log(output.toString())
+      console.log(newOwner)
+      setNewOwner({ newOwner: '' })
+
+      //something with memoization
+
+      // const addressAsU8a = decodeAddress(newOwner)
+      // console.log(addressAsU8a)
+      // const { } = await contractTxWithToast(
+      //   api,
+      //   activeAccount!.address,
+      //   contract,
+      //   "set_owner",
+      //   {},
+      //   [addressAsU8a],
+      // );
+      // const result = await contractQuery(api, "", contract, "get_owner");
+      // const { output }: { output: boolean } = decodeOutput(
+      //   result,
+      //   contract,
+      //   "get_owner",
+      // );
+      // setOwner({ onwerName: output.toString() });
+      // console.log(output.toString())
 
     } catch (e) {
       console.log(e)
     }
   }, [contract, api]);
-
 
 
   return (
