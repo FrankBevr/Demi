@@ -1,10 +1,10 @@
 {
   "source": {
-    "hash": "0x439a73e9116d53d76ca41f1291b8c554f2fb978514de99d920399e7f7599d6b4",
+    "hash": "0x484bb871f548378c7ea5aa463b16d41a1a2b57751fd90dd7f5191d4c92ade278",
     "language": "ink! 4.3.0",
     "compiler": "rustc 1.73.0",
     "build_info": {
-      "build_mode": "Release",
+      "build_mode": "Debug",
       "cargo_contract_version": "3.2.0",
       "rust_toolchain": "stable-x86_64-unknown-linux-gnu",
       "wasm_opt_settings": {

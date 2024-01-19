@@ -2,6 +2,7 @@
 
 #[ink::contract]
 mod demi {
+
     #[ink(storage)]
     pub struct Demi {
         owner: AccountId,
@@ -21,7 +22,7 @@ mod demi {
 
         #[ink(message)]
         pub fn init(&mut self) {
-            if self.owner == AccountId::from([0x0; 32]) {
+            if self.owner == AccountId::from([0xFF; 32]) {
                 self.owner = Self::env().caller();
             }
         }
