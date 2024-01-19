@@ -16,6 +16,7 @@ import Button from "./components/Button";
 import Input from "./components/Input";
 import Logo from "./components/Logo";
 import { contractTxWithToast } from "@/utils/contract-tx-with-toast";
+import { decodeAddress } from "@polkadot/util-crypto";
 
 export default function HomePage() {
   const { error } = useInkathon();
@@ -35,6 +36,7 @@ export default function HomePage() {
     onwerName: {
       label: "owner",
       value: "5Hr.....",
+      disabled: true,
       onChange: (c) => {
         setOwner({ onwerName: c });
         toast.success("Owner changed");
@@ -47,6 +49,7 @@ export default function HomePage() {
     validatorName: {
       label: "validator",
       value: "5Hr.....",
+      disabled: true,
       onChange: (c) => {
         setValidator({ validatorName: c });
         toast.success("Validator changed");
@@ -59,6 +62,7 @@ export default function HomePage() {
     nodeName: {
       label: "node",
       value: "5Hr.....",
+      disabled: true,
       onChange: (c) => {
         setNode({ nodeName: c });
         toast.success("Node changed");
@@ -94,7 +98,6 @@ export default function HomePage() {
     if (!contract || !api) return;
     const result = await contractQuery(api, "", contract, "get_node");
     const { output }: { output: boolean } = decodeOutput(
-
       result,
       contract,
       "get_node",
@@ -112,37 +115,69 @@ export default function HomePage() {
   /*Handling Write Functions in Debug UI*/
   /**************************************/
 
-  /**************************************/
-  /*BOTOND BOTOND BOTOND BOTOND BOTOND  */
-  /**************************************/
+  const [] = useControls(() => ({
+    callInit: button(() => {
+      callInit()
+    }
+    ),
+  }));
 
-  // work in progress
+  const callInit = useCallback(async () => {
+    if (!contract || !api) return;
+    try {
+      await contractTxWithToast(
+        api,
+        activeAccount!.address,
+        contract,
+        "init",
+        {},
+        [],
 
-  // const [newOwner,setNewOwner ] = useControls(() => ({
-  //   newOwner: {
-  //     label: "newOwner",
-  //     value: ".....",
-  //   },
-  //   getNewNodeOwner: button((abc) => setNewNodeOwner(abc.arguments)),
-  // }));
+      );
+    } catch (e) {
+      console.log(e)
+    }
+  }, [contract, api]);
+
+  const [newOwner, setNewOwner] = useControls(() => ({
+    newOwner: {
+      label: "newOwner",
+      value: ".....",
+    },
+    setNewNodeOwner: button(() => {
+      setNewNodeOwner()
+    }
+    ),
+  }));
 
   const setNewNodeOwner = useCallback(async () => {
     if (!contract || !api) return;
-    await contractTxWithToast(
-      api,
-      activeAccount!.address,
-      contract,
-      "set_owner",
-      {},
-      [],
-    );
+    try {
+      const addressAsU8a = decodeAddress(activeAccount!.address); // convert address to u8a
+      const { } = await contractTxWithToast(
+        api,
+        activeAccount!.address,
+        contract,
+        "set_owner",
+        {},
+        [addressAsU8a], // pass the u8a address
+      );
+      const result = await contractQuery(api, "", contract, "get_owner");
+      const { output }: { output: boolean } = decodeOutput(
+        result,
+        contract,
+        "get_owner",
+      );
+      setOwner({ onwerName: output.toString() });
+      console.log(output.toString())
+
+    } catch (e) {
+      console.log(e)
+    }
   }, [contract, api]);
 
-  // work in progress
 
-  /**************************************/
-  /*BOTOND BOTOND BOTOND BOTOND BOTOND  */
-  /**************************************/
+
   return (
     <>
       {api && contract && (
