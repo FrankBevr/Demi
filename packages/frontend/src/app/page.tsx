@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ContractIds } from "@/deployments/deployments";
 import {
   contractQuery,
+  contractTx,
   decodeOutput,
   useInkathon,
   useRegisteredContract,
@@ -139,52 +140,25 @@ export default function HomePage() {
     }
   }, [contract, api]);
 
-  const [newOwner, setNewOwner] = useControls("WRITE", () => ({
-    newOwner: {
-      label: "newOwner",
-      value: ".....",
-      onChange: (c) => {
-        setNewOwner({ newOwner: c })
-      },
-      transient: false,
-    },
-    setNewNodeOwner: button(() => {
-      setNewNodeOwner()
-    }
-    ),
+
+  const [newOwner] = useControls("WRITE", () => ({
+    inputValue: ".....",
+    setOwner: button(() => callSetNewOwner())
   }));
 
-  const setNewNodeOwner = useCallback(async () => {
+  useEffect(() => {
+    callSetNewOwner();
+  }, [newOwner]);
+
+  function callSetNewOwner() {
     if (!contract || !api) return;
     try {
-      console.log(newOwner)
-      setNewOwner({ newOwner: '' })
-
-      //something with memoization
-
-      // const addressAsU8a = decodeAddress(newOwner)
-      // console.log(addressAsU8a)
-      // const { } = await contractTxWithToast(
-      //   api,
-      //   activeAccount!.address,
-      //   contract,
-      //   "set_owner",
-      //   {},
-      //   [addressAsU8a],
-      // );
-      // const result = await contractQuery(api, "", contract, "get_owner");
-      // const { output }: { output: boolean } = decodeOutput(
-      //   result,
-      //   contract,
-      //   "get_owner",
-      // );
-      // setOwner({ onwerName: output.toString() });
-      // console.log(output.toString())
-
+      contractTx(api, activeAccount?.address!, contract, 'set_owner', {}, [newOwner.inputValue])
     } catch (e) {
       console.log(e)
     }
-  }, [contract, api]);
+  }
+
 
 
   return (
