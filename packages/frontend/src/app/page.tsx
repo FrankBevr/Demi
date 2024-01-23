@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { ContractIds } from "@/deployments/deployments";
+import { decodeAddress } from "@polkadot/util-crypto";
 import {
   contractQuery,
   contractTx,
@@ -13,11 +14,11 @@ import {
 import { LevaInputs, button, useControls } from "leva";
 import toast from "react-hot-toast";
 
+import { contractTxWithToast } from "@/utils/contract-tx-with-toast";
+
 import Button from "./components/Button";
 import Input from "./components/Input";
 import Logo from "./components/Logo";
-import { contractTxWithToast } from "@/utils/contract-tx-with-toast";
-import { decodeAddress } from "@polkadot/util-crypto";
 
 export default function HomePage() {
   const { error } = useInkathon();
@@ -38,10 +39,6 @@ export default function HomePage() {
       label: "owner",
       value: "5Hr.....",
       disabled: true,
-      onChange: (c) => {
-        setOwner({ onwerName: c });
-        toast.success("Owner changed");
-      },
     },
     getOwner: button(() => getOwner()),
   }));
@@ -51,10 +48,6 @@ export default function HomePage() {
       label: "validator",
       value: "5Hr.....",
       disabled: true,
-      onChange: (c) => {
-        setValidator({ validatorName: c });
-        toast.success("Validator changed");
-      },
     },
     getValidator: button(() => getValidator()),
   }));
@@ -64,10 +57,6 @@ export default function HomePage() {
       label: "node",
       value: "5Hr.....",
       disabled: true,
-      onChange: (c) => {
-        setNode({ nodeName: c });
-        toast.success("Node changed");
-      },
     },
     getNode: button(() => getNode()),
   }));
@@ -82,7 +71,12 @@ export default function HomePage() {
       "get_owner",
     );
     setOwner({ onwerName: output.toString() });
-  }, [contract, api]);
+  }, [api, contract]);
+
+  useEffect(() => {
+    getOwner();
+  }, [getOwner]);
+
 
   const getValidator = useCallback(async () => {
     if (!contract || !api) return;
@@ -93,7 +87,11 @@ export default function HomePage() {
       "get_validator",
     );
     setValidator({ validatorName: output.toString() });
-  }, [contract, api]);
+  }, [api, contract]);
+
+  useEffect(() => {
+    getValidator()
+  }, [getValidator])
 
   const getNode = useCallback(async () => {
     if (!contract || !api) return;
@@ -104,62 +102,101 @@ export default function HomePage() {
       "get_node",
     );
     setNode({ nodeName: output.toString() });
-  }, [contract, api]);
+  }, [api, contract]);
 
   useEffect(() => {
-    getOwner();
-    getValidator()
     getNode()
-  }, [getOwner, getValidator, getNode, contract, api]);
+  }, [getNode])
 
   /**************************************/
   /*Handling Write Functions in Debug UI*/
   /**************************************/
 
-  useControls("WRITE", () => ({
-    callInit: button(() => {
-      callInit()
-    }
-    ),
-  }));
-
   const callInit = useCallback(async () => {
     if (!contract || !api) return;
-    try {
-      await contractTxWithToast(
-        api,
-        activeAccount!.address,
-        contract,
-        "init",
-        {},
-        [],
+    await contractTxWithToast(
+      api,
+      activeAccount!.address,
+      contract,
+      "init",
+      {},
+      [],
+    );
+  }, [api, contract, activeAccount]);
 
-      );
+  useControls("WRITE", () => ({
+    callInit: button(() => {
+      callInit();
+    }),
+  }), [callInit]);
+
+
+  const [newOwner, setNewOwner] = useControls("WRITE", () => ({
+    newOwnerInput: "...",
+    setNewOwner: button(() => callSetNewOwner()),
+  }));
+
+
+  useEffect(() => {
+    setNewOwner({ newOwnerInput: newOwner.newOwnerInput })
+  }, [newOwner]);
+
+  const callSetNewOwner = useCallback(async () => {
+    console.log(newOwner)
+    if (!contract || !api) return;
+    try {
+      await contractTx(api, activeAccount?.address!, contract, "set_owner", {}, [
+        newOwner.newOwnerInput,
+      ]);
+      setNewOwner({ newOwnerInput: '' })
     } catch (e) {
       console.log(e)
     }
-  }, [contract, api]);
+  }, [activeAccount?.address])
 
-
-  const [newOwner] = useControls("WRITE", () => ({
-    inputValue: ".....",
-    setOwner: button(() => callSetNewOwner())
+  const [newNode, setNewNode] = useControls("WRITE", () => ({
+    newNodeInput: "...",
+    setNewNode: button(() => callSetNewNode()),
   }));
 
   useEffect(() => {
-    callSetNewOwner();
-  }, [newOwner]);
+    setNewNode({ newNodeInput: newNode.newNodeInput })
+  }, [newNode]);
 
-  function callSetNewOwner() {
-    if (!contract || !api) return;
+  const callSetNewNode = useCallback(async () => {
     try {
-      contractTx(api, activeAccount?.address!, contract, 'set_owner', {}, [newOwner.inputValue])
+      console.log(newNode)
+      if (!contract || !api) return;
+      await contractTx(api, activeAccount?.address!, contract, "set_node", {}, [
+        newNode.newNodeInput,
+      ]);
+      setNewNode({ newNodeInput: '' })
     } catch (e) {
       console.log(e)
     }
-  }
+  }, [activeAccount?.address])
 
+  const [newValidator, setNewValidator] = useControls("WRITE", () => ({
+    newValidatorInput: "...",
+    setNewValidator: button(() => callSetNewValidator()),
+  }));
 
+  useEffect(() => {
+    setNewValidator({ newValidatorInput: newValidator.newValidatorInput })
+  }, [newValidator]);
+
+  const callSetNewValidator = useCallback(async () => {
+    console.log(newValidator)
+    try {
+      if (!contract || !api) return;
+      await contractTx(api, activeAccount?.address!, contract, "set_validator", {}, [
+        newValidator.newValidatorInput,
+      ]);
+      setNewValidator({ newValidatorInput: '' })
+    } catch (e) {
+      console.log(e)
+    }
+  }, [activeAccount?.address])
 
   return (
     <>
