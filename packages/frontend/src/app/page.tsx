@@ -1,9 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 import { ContractIds } from "@/deployments/deployments";
-import { decodeAddress } from "@polkadot/util-crypto";
 import {
   contractQuery,
   contractTx,
@@ -11,11 +9,8 @@ import {
   useInkathon,
   useRegisteredContract,
 } from "@scio-labs/use-inkathon";
-import { LevaInputs, button, useControls } from "leva";
+import { button, useControls } from "leva";
 import toast from "react-hot-toast";
-
-import { contractTxWithToast } from "@/utils/contract-tx-with-toast";
-
 import Button from "./components/Button";
 import Input from "./components/Input";
 import Logo from "./components/Logo";
@@ -34,14 +29,27 @@ export default function HomePage() {
   /*************************************/
   /*Handling Read Functions in Debug UI*/
   /*************************************/
+
   const [owner, setOwner] = useControls("READ", () => ({
-    onwerName: {
+    ownerName: {
       label: "owner",
       value: "5Hr.....",
       disabled: true,
     },
-    getOwner: button(() => getOwner()),
-  }));
+    getOwner: button(() => {
+      if (!contract || !api) return;
+      (async () => {
+        const result = await contractQuery(api!, "", contract!, "get_owner");
+        const { output }: { output: boolean } = decodeOutput(
+          result,
+          contract!,
+          "get_owner",
+        );
+        setOwner({ ownerName: output.toString() });
+      })()
+    }
+    ),
+  }), [api, contract]);
 
   const [validator, setValidator] = useControls("READ", () => ({
     validatorName: {
@@ -49,8 +57,19 @@ export default function HomePage() {
       value: "5Hr.....",
       disabled: true,
     },
-    getValidator: button(() => getValidator()),
-  }));
+    getValidator: button(() => {
+      if (!contract || !api) return;
+      (async () => {
+        const result = await contractQuery(api!, "", contract!, "get_validator");
+        const { output }: { output: boolean } = decodeOutput(
+          result,
+          contract!,
+          "get_validator",
+        );
+        setValidator({ validatorName: output.toString() });
+      })()
+    }),
+  }), [api, contract]);
 
   const [node, setNode] = useControls("READ", () => ({
     nodeName: {
@@ -58,162 +77,111 @@ export default function HomePage() {
       value: "5Hr.....",
       disabled: true,
     },
-    getNode: button(() => getNode()),
-  }));
-
-
-  const getOwner = useCallback(async () => {
-    if (!contract || !api) return;
-    const result = await contractQuery(api, "", contract, "get_owner");
-    const { output }: { output: boolean } = decodeOutput(
-      result,
-      contract,
-      "get_owner",
-    );
-    setOwner({ onwerName: output.toString() });
-  }, [api, contract]);
-
-  useEffect(() => {
-    getOwner();
-  }, [getOwner]);
-
-
-  const getValidator = useCallback(async () => {
-    if (!contract || !api) return;
-    const result = await contractQuery(api, "", contract, "get_validator");
-    const { output }: { output: boolean } = decodeOutput(
-      result,
-      contract,
-      "get_validator",
-    );
-    setValidator({ validatorName: output.toString() });
-  }, [api, contract]);
-
-  useEffect(() => {
-    getValidator()
-  }, [getValidator])
-
-  const getNode = useCallback(async () => {
-    if (!contract || !api) return;
-    const result = await contractQuery(api, "", contract, "get_node");
-    const { output }: { output: boolean } = decodeOutput(
-      result,
-      contract,
-      "get_node",
-    );
-    setNode({ nodeName: output.toString() });
-  }, [api, contract]);
-
-  useEffect(() => {
-    getNode()
-  }, [getNode])
+    getNode: button(() => {
+      if (!contract || !api) return;
+      (async () => {
+        const result = await contractQuery(api!, "", contract!, "get_node");
+        const { output }: { output: boolean } = decodeOutput(
+          result,
+          contract!,
+          "get_node",
+        );
+        setNode({ nodeName: output.toString() });
+      })()
+    }),
+  }), [api, contract]);
 
   /**************************************/
   /*Handling Write Functions in Debug UI*/
   /**************************************/
 
-  const callInit = useCallback(async () => {
-    if (!contract || !api) return;
-    await contractTxWithToast(
-      api,
-      activeAccount!.address,
-      contract,
-      "init",
-      {},
-      [],
-    );
-  }, [api, contract, activeAccount]);
+  const [isInit, setIsInit] = useState(false)
+  const [newNodi, setNewNodi] = useState('')
+  const [newOwni, setNewOwni] = useState('')
+  const [newVali, setNewVali] = useState('')
+
 
   useControls("WRITE", () => ({
     callInit: button(() => {
-      callInit();
+      if (!contract || !api || activeAccount!) return;
+      (async () => {
+        await contractTx(
+          api,
+          activeAccount!.address,
+          contract,
+          "init",
+          {},
+          [],
+        );
+        setIsInit(true)
+        console.log(`isInit is now ${isInit}`)
+      })()
     }),
-  }), [callInit]);
+  }), [api, contract, activeAccount]);
 
-
-  const [newOwner, setNewOwner] = useControls("WRITE", () => ({
-    newOwnerInput: "...",
-    setNewOwner: button(() => callSetNewOwner()),
-  }));
-
-
-  useEffect(() => {
-    setNewOwner({ newOwnerInput: newOwner.newOwnerInput })
-  }, [newOwner]);
-
-  const callSetNewOwner = useCallback(async () => {
-    console.log(newOwner)
-    if (!contract || !api) return;
-    try {
-      await contractTx(api, activeAccount?.address!, contract, "set_owner", {}, [
-        newOwner.newOwnerInput,
-      ]);
-      setNewOwner({ newOwnerInput: '' })
-    } catch (e) {
-      console.log(e)
-    }
-  }, [activeAccount?.address])
-
-  const [newNode, setNewNode] = useControls("WRITE", () => ({
-    newNodeInput: "...",
-    setNewNode: button(() => callSetNewNode()),
-  }));
-
-  useEffect(() => {
-    setNewNode({ newNodeInput: newNode.newNodeInput })
-  }, [newNode]);
-
-  const callSetNewNode = useCallback(async () => {
-    try {
-      console.log(newNode)
+  useControls("WRITE", () => ({
+    newOwnerInput: {
+      label: "newOwnerInput",
+      value: "...",
+      onChange: (c) => { setNewOwni(c) },
+      transient: true,
+    },
+    setNewOwner: button(() => {
       if (!contract || !api) return;
-      await contractTx(api, activeAccount?.address!, contract, "set_node", {}, [
-        newNode.newNodeInput,
-      ]);
-      setNewNode({ newNodeInput: '' })
-    } catch (e) {
-      console.log(e)
-    }
-  }, [activeAccount?.address])
+      (async () => {
+        await contractTx(api!, activeAccount?.address!, contract!, "set_owner", {}, [
+          newOwni,
+        ]);
+      })()
+    }),
+  }), [newNodi, api, contract]);
 
-  const [newValidator, setNewValidator] = useControls("WRITE", () => ({
-    newValidatorInput: "...",
-    setNewValidator: button(() => callSetNewValidator()),
-  }));
-
-  useEffect(() => {
-    setNewValidator({ newValidatorInput: newValidator.newValidatorInput })
-  }, [newValidator]);
-
-  const callSetNewValidator = useCallback(async () => {
-    console.log(newValidator)
-    try {
+  useControls("WRITE", () => ({
+    newNodeInput: {
+      label: "newNodeInput",
+      value: "...",
+      onChange: (c) => { setNewNodi(c) },
+      transient: true
+    },
+    setNewNode: button(() => {
       if (!contract || !api) return;
-      await contractTx(api, activeAccount?.address!, contract, "set_validator", {}, [
-        newValidator.newValidatorInput,
-      ]);
-      setNewValidator({ newValidatorInput: '' })
-    } catch (e) {
-      console.log(e)
+      (async () => {
+        await contractTx(api!, activeAccount?.address!, contract!, "set_node", {}, [newNodi]);
+      })()
     }
-  }, [activeAccount?.address])
+    ),
+  }), [newNodi, api, contract]);
+
+  useControls("WRITE", () => ({
+    newValidatorInput: {
+      label: "newValidatorInput",
+      value: "...",
+      onChange: (c) => { setNewVali(c) },
+      transient: true
+    },
+    setNewValidator: button(() => {
+      if (!contract || !api) return;
+      (async () => {
+        await contractTx(api!, activeAccount?.address!, contract!, "set_validator", {}, [
+          newVali,
+        ]);
+      })()
+    }),
+  }), [newVali, api, contract]);
+
+  if (!api || !contract) {
+    return <div>Loading...Please wait...</div>;
+  }
 
   return (
-    <>
-      {api && contract && (
-        <>
-          <div className="overflow-x-hidden-container">
-            <div className="center-container">
-              <div className="flex-container">
-                <Logo />
-                <Input placeholder="Describe your Data" />
-                <Button buttonText="generate" className="margin-left-auto" />
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-      {!api || (!contract && <div></div>)}
-    </>
+    <div className="overflow-x-hidden-container">
+      <div className="center-container">
+        <div className="flex-container">
+          <Logo />
+          <Input placeholder="Describe your Data" />
+          <Button buttonText="generate" className="margin-left-auto" />
+        </div>
+      </div>
+    </div>
   );
 }
