@@ -2,6 +2,7 @@
 
 #[ink::contract]
 mod demi {
+    use ink::prelude::string::String;
     use ink::prelude::vec::Vec;
 
     #[ink(storage)]
@@ -11,6 +12,7 @@ mod demi {
         node: AccountId,
         validators: Vec<AccountId>,
         nodes: Vec<AccountId>,
+        tasks: Vec<String>,
     }
 
     impl Demi {
@@ -22,6 +24,7 @@ mod demi {
                 node: AccountId::from([0xFF as u8; 32]),
                 validators: Vec::new(),
                 nodes: Vec::new(),
+                tasks: Vec::new(),
             }
         }
 
