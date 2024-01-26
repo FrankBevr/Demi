@@ -7,7 +7,7 @@ mod demi {
     pub struct Demi {
         owner: AccountId,
         validator: AccountId,
-        nodes: AccountId,
+        node: AccountId,
     }
 
     impl Demi {
@@ -16,7 +16,7 @@ mod demi {
             Self {
                 owner: AccountId::from([0xFF as u8; 32]),
                 validator: AccountId::from([0xFF as u8; 32]),
-                nodes: AccountId::from([0xFF as u8; 32]),
+                node: AccountId::from([0xFF as u8; 32]),
             }
         }
 
@@ -52,9 +52,7 @@ mod demi {
 
         #[ink(message)]
         pub fn set_validator(&mut self, new_validator: AccountId) {
-            if self.env().caller() == self.validator {
-                self.validator = new_validator;
-            }
+            self.validator = new_validator;
         }
 
         /*********/
@@ -62,12 +60,12 @@ mod demi {
         /*********/
         #[ink(message)]
         pub fn get_node(&self) -> AccountId {
-            self.nodes.clone()
+            self.node.clone()
         }
 
         #[ink(message)]
-        pub fn set_node(&mut self) {
-            self.nodes = self.env().caller();
+        pub fn set_node(&mut self, new_node: AccountId) {
+            self.node = new_node
         }
     }
 }

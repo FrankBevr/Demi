@@ -1,10 +1,10 @@
 {
   "source": {
-    "hash": "0x484bb871f548378c7ea5aa463b16d41a1a2b57751fd90dd7f5191d4c92ade278",
+    "hash": "0x72823f5737ac18ad34e4273d35d0f54aae6539697e5f35cf4d1a306fd5e38f3f",
     "language": "ink! 4.3.0",
     "compiler": "rustc 1.73.0",
     "build_info": {
-      "build_mode": "Debug",
+      "build_mode": "Release",
       "cargo_contract_version": "3.2.0",
       "rust_toolchain": "stable-x86_64-unknown-linux-gnu",
       "wasm_opt_settings": {
@@ -204,7 +204,17 @@
         "selector": "0x60d47579"
       },
       {
-        "args": [],
+        "args": [
+          {
+            "label": "new_node",
+            "type": {
+              "displayName": [
+                "AccountId"
+              ],
+              "type": 0
+            }
+          }
+        ],
         "default": false,
         "docs": [],
         "label": "set_node",
@@ -251,7 +261,7 @@
                   "ty": 0
                 }
               },
-              "name": "nodes"
+              "name": "node"
             }
           ],
           "name": "Demi"
