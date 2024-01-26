@@ -76,9 +76,9 @@ mod demi {
             self.node = new_node
         }
 
-        /*************/
+        /**************/
         /* VALIDATORS */
-        /*************/
+        /**************/
         #[ink(message)]
         pub fn get_validators(&self) -> Vec<AccountId> {
             self.validators.clone()
@@ -89,9 +89,9 @@ mod demi {
             self.validators.push(new_validator)
         }
 
-        /********/
+        /*********/
         /* NODES */
-        /********/
+        /*********/
         #[ink(message)]
         pub fn get_nodes(&self) -> Vec<AccountId> {
             self.nodes.clone()
@@ -100,6 +100,19 @@ mod demi {
         #[ink(message)]
         pub fn add_node(&mut self, new_node: AccountId) {
             self.nodes.push(new_node)
+        }
+
+        /*********/
+        /* TASKS */
+        /*********/
+        #[ink(message)]
+        pub fn get_tasks(&self) -> Vec<String> {
+            self.tasks.clone()
+        }
+
+        #[ink(message)]
+        pub fn add_task(&mut self, task: String) {
+            self.tasks.push(task)
         }
     }
 }
