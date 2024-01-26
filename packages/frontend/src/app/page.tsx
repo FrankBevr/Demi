@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { ContractIds } from "@/deployments/deployments";
 import {
@@ -10,169 +9,235 @@ import {
   useRegisteredContract,
 } from "@scio-labs/use-inkathon";
 import { button, useControls } from "leva";
-import toast from "react-hot-toast";
+
 import Button from "./components/Button";
 import Input from "./components/Input";
 import Logo from "./components/Logo";
 
 export default function HomePage() {
-  const { error } = useInkathon();
-  const { api, activeAccount } = useInkathon();
-  const { contract } = useRegisteredContract(ContractIds.Demi);
+  const { api, activeAccount, activeSigner } = useInkathon();
+  const { contract: contractGreeter } = useRegisteredContract(ContractIds.Greeter);
+  const { contract: contractDemi } = useRegisteredContract(ContractIds.Demi);
 
-  /*Toast occuring Error*/
+  /*********/
+  /*GREETER*/
+  /*********/
+
+  /*READ*/
+  const [, setRead] = useControls("GREETER_READ", () => ({
+    greet: "...",
+    get_greet: button(() => getGreet()),
+  }));
+
+  const getGreet = async () => {
+    if (!contractGreeter || !api) return;
+    const result = await contractQuery(api, "", contractGreeter, "greet");
+    const { output, isError, decodedOutput } = decodeOutput(
+      result,
+      contractGreeter,
+      "greet",
+    );
+    if (isError) throw new Error(decodedOutput);
+    setRead({ greet: output })
+  }
+
   useEffect(() => {
-    if (!error) return;
-    toast.error(error.message);
-  }, [error]);
+    getGreet()
+  }, [api, contractGreeter]);
 
-  /*************************************/
-  /*Handling Read Functions in Debug UI*/
-  /*************************************/
-
-  const [owner, setOwner] = useControls("READ", () => ({
-    ownerName: {
-      label: "owner",
-      value: "5Hr.....",
-      disabled: true,
+  /*WRITE*/
+  const [message, setMessage] = useState('')
+  const [, setM] = useControls("GREETER_WRITE", () => ({
+    new_greet: {
+      value: "Hoi!",
+      onChange: (c) => { setMessage(c) },
     },
-    getOwner: button(() => {
-      if (!contract || !api) return;
-      (async () => {
-        const result = await contractQuery(api!, "", contract!, "get_owner");
-        const { output }: { output: boolean } = decodeOutput(
-          result,
-          contract!,
-          "get_owner",
-        );
-        setOwner({ ownerName: output.toString() });
-      })()
-    }
-    ),
-  }), [api, contract]);
-
-  const [validator, setValidator] = useControls("READ", () => ({
-    validatorName: {
-      label: "validator",
-      value: "5Hr.....",
-      disabled: true,
-    },
-    getValidator: button(() => {
-      if (!contract || !api) return;
-      (async () => {
-        const result = await contractQuery(api!, "", contract!, "get_validator");
-        const { output }: { output: boolean } = decodeOutput(
-          result,
-          contract!,
-          "get_validator",
-        );
-        setValidator({ validatorName: output.toString() });
-      })()
-    }),
-  }), [api, contract]);
-
-  const [node, setNode] = useControls("READ", () => ({
-    nodeName: {
-      label: "node",
-      value: "5Hr.....",
-      disabled: true,
-    },
-    getNode: button(() => {
-      if (!contract || !api) return;
-      (async () => {
-        const result = await contractQuery(api!, "", contract!, "get_node");
-        const { output }: { output: boolean } = decodeOutput(
-          result,
-          contract!,
-          "get_node",
-        );
-        setNode({ nodeName: output.toString() });
-      })()
-    }),
-  }), [api, contract]);
-
-  /**************************************/
-  /*Handling Write Functions in Debug UI*/
-  /**************************************/
-
-  const [isInit, setIsInit] = useState(false)
-  const [newNodi, setNewNodi] = useState('')
-  const [newOwni, setNewOwni] = useState('')
-  const [newVali, setNewVali] = useState('')
-
-
-  useControls("WRITE", () => ({
-    callInit: button(() => {
-      if (!contract || !api || activeAccount!) return;
+    change_greet: button(() => {
+      if (!activeAccount || !contractGreeter || !activeSigner || !api) {
+        return;
+      }
       (async () => {
         await contractTx(
           api,
-          activeAccount!.address,
-          contract,
+          activeAccount.address,
+          contractGreeter,
+          "setMessage",
+          {},
+          [message],
+        );
+        getGreet()
+        setM({ new_greet: '' })
+        setMessage('')
+      })()
+    }),
+  }), [message]);
+
+  /******/
+  /*DEMI*/
+  /******/
+
+  /*READ*/
+  const [, setReadDemi] = useControls("DEMI_READ", () => ({
+    owner: "...",
+    node: "...",
+    validator: "...",
+    get_owner: button(() => getOwner()),
+    get_node: button(() => getNode()),
+    get_validator: button(() => getValidator()),
+  }));
+
+  const getOwner = async () => {
+    if (!contractDemi || !api) return;
+    const result = await contractQuery(api, "", contractDemi, "get_owner");
+    const { output, isError, decodedOutput } = decodeOutput(
+      result,
+      contractDemi,
+      "get_owner",
+    );
+    if (isError) throw new Error(decodedOutput);
+    setReadDemi({ owner: output })
+  }
+
+  const getNode = async () => {
+    if (!contractDemi || !api) return;
+    const result = await contractQuery(api, "", contractDemi, "get_node");
+    const { output, isError, decodedOutput } = decodeOutput(
+      result,
+      contractDemi,
+      "get_node",
+    );
+    if (isError) throw new Error(decodedOutput);
+    setReadDemi({ node: output })
+  }
+
+  const getValidator = async () => {
+    if (!contractDemi || !api) return;
+    const result = await contractQuery(api, "", contractDemi, "get_validator");
+    const { output, isError, decodedOutput } = decodeOutput(
+      result,
+      contractDemi,
+      "get_validator",
+    );
+    if (isError) throw new Error(decodedOutput);
+    setReadDemi({ validator: output })
+  }
+
+  useEffect(() => {
+    getOwner()
+    getNode()
+    getValidator()
+  }, [api, contractDemi]);
+
+
+  /*WRITE*/
+
+  const [isInit, setIsInit] = useState(false)
+
+  const [, setI] = useControls("DEMI_WRITE", () => ({
+    isInit: {
+      value: false,
+      disabled: true,
+    },
+    init: button(() => {
+      if (!activeAccount || !contractDemi || !activeSigner || !api) {
+        return;
+      }
+      (async () => {
+        await contractTx(
+          api,
+          activeAccount.address,
+          contractDemi,
           "init",
           {},
           [],
         );
+        setI({ isInit: true })
         setIsInit(true)
-        console.log(`isInit is now ${isInit}`)
+        setIsInit(true)
       })()
     }),
-  }), [api, contract, activeAccount]);
+  }), [isInit]);
 
-  useControls("WRITE", () => ({
-    newOwnerInput: {
-      label: "newOwnerInput",
-      value: "...",
-      onChange: (c) => { setNewOwni(c) },
-      transient: true,
+
+  const [owner, setOwner] = useState('')
+  const [, setO] = useControls("DEMI_WRITE", () => ({
+    new_owner: {
+      value: "0x0000",
+      onChange: (c) => { setOwner(c) },
     },
-    setNewOwner: button(() => {
-      if (!contract || !api) return;
+    change_owner: button(() => {
+      if (!activeAccount || !contractDemi || !activeSigner || !api) {
+        return;
+      }
       (async () => {
-        await contractTx(api!, activeAccount?.address!, contract!, "set_owner", {}, [
-          newOwni,
-        ]);
+        await contractTx(
+          api,
+          activeAccount.address,
+          contractDemi,
+          "set_owner",
+          {},
+          [owner],
+        );
+        getOwner()
+        setO({ new_owner: '' })
+        setOwner('')
       })()
     }),
-  }), [newNodi, api, contract]);
+  }), [owner]);
 
-  useControls("WRITE", () => ({
-    newNodeInput: {
-      label: "newNodeInput",
-      value: "...",
-      onChange: (c) => { setNewNodi(c) },
-      transient: true
+  const [node, setNode] = useState('')
+  const [, setN] = useControls("DEMI_WRITE", () => ({
+    new_node: {
+      value: "0x0000",
+      onChange: (c) => { setNode(c) },
     },
-    setNewNode: button(() => {
-      if (!contract || !api) return;
+    change_node: button(() => {
+      if (!activeAccount || !contractDemi || !activeSigner || !api) {
+        return;
+      }
       (async () => {
-        await contractTx(api!, activeAccount?.address!, contract!, "set_node", {}, [newNodi]);
-      })()
-    }
-    ),
-  }), [newNodi, api, contract]);
-
-  useControls("WRITE", () => ({
-    newValidatorInput: {
-      label: "newValidatorInput",
-      value: "...",
-      onChange: (c) => { setNewVali(c) },
-      transient: true
-    },
-    setNewValidator: button(() => {
-      if (!contract || !api) return;
-      (async () => {
-        await contractTx(api!, activeAccount?.address!, contract!, "set_validator", {}, [
-          newVali,
-        ]);
+        await contractTx(
+          api,
+          activeAccount.address,
+          contractDemi,
+          "set_node",
+          {},
+          [node],
+        );
+        getNode()
+        setN({ new_node: '' })
+        setNode('')
       })()
     }),
-  }), [newVali, api, contract]);
+  }), [node]);
 
-  if (!api || !contract) {
-    return <div>Loading...Please wait...</div>;
-  }
+  const [validator, setValidator] = useState('')
+  const [, setV] = useControls("DEMI_WRITE", () => ({
+    new_validator: {
+      value: "0x0000",
+      onChange: (c) => { setValidator(c) },
+    },
+    change_validator: button(() => {
+      if (!activeAccount || !contractDemi || !activeSigner || !api) {
+        return;
+      }
+      (async () => {
+        await contractTx(
+          api,
+          activeAccount.address,
+          contractDemi,
+          "set_validator",
+          {},
+          [validator],
+        );
+        getValidator()
+        setV({ new_validator: '' })
+        setValidator('')
+      })()
+    }),
+  }), [validator]);
 
+  if (!api) return null;
   return (
     <div className="overflow-x-hidden-container">
       <div className="center-container">
