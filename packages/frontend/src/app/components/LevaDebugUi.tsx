@@ -271,6 +271,66 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
     [validator],
   );
 
+
+  /******/
+  /*READ*/
+  /******/
+  /*TASKS*/
+  const [, setReadDemiAdv] = useControls("DEMI_READ", () => ({
+    nodes: "...",
+    validators: "...",
+    tasks: "...",
+    get_nodes: button(() => getNodes()),
+    get_validators: button(() => getValidators()),
+    get_tasks: button(() => getTasks()),
+  }));
+
+
+  const getNodes = async () => {
+    if (!contractDemi || !api) return;
+    const result = await contractQuery(api, "", contractDemi, "get_nodes");
+    const { output, isError, decodedOutput } = decodeOutput(
+      result,
+      contractDemi,
+      "get_nodes",
+    );
+    console.log(output)
+    if (isError) throw new Error(decodedOutput);
+    // setReadDemiAdv({ nodes: output });
+  };
+
+  const getValidators = async () => {
+    if (!contractDemi || !api) return;
+    const result = await contractQuery(api, "", contractDemi, "get_validators");
+    const { output, isError, decodedOutput } = decodeOutput(
+      result,
+      contractDemi,
+      "get_validators",
+    );
+    console.log(output)
+    if (isError) throw new Error(decodedOutput);
+    // setReadDemiAdv({ validators: output });
+  };
+
+  const getTasks = async () => {
+    if (!contractDemi || !api) return;
+    const result = await contractQuery(api, "", contractDemi, "get_tasks");
+    const { output, isError, decodedOutput } = decodeOutput(
+      result,
+      contractDemi,
+      "get_tasks",
+    );
+    console.log(output)
+    if (isError) throw new Error(decodedOutput);
+    // setReadDemiAdv({ tasks: output });
+  };
+
+  useEffect(() => {
+    getNodes();
+    getValidators();
+    getTasks()
+  }, [api, contractDemi]);
+
   return null; // Render whatever you want or just return null if the component doesn't render anything.
 };
 
