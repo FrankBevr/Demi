@@ -2,12 +2,15 @@
 
 #[ink::contract]
 mod demi {
+    use ink::prelude::vec::Vec;
 
     #[ink(storage)]
     pub struct Demi {
         owner: AccountId,
         validator: AccountId,
         node: AccountId,
+        validators: Vec<AccountId>,
+        nodes: Vec<AccountId>,
     }
 
     impl Demi {
@@ -17,6 +20,8 @@ mod demi {
                 owner: AccountId::from([0xFF as u8; 32]),
                 validator: AccountId::from([0xFF as u8; 32]),
                 node: AccountId::from([0xFF as u8; 32]),
+                validators: Vec::new(),
+                nodes: Vec::new(),
             }
         }
 
@@ -55,9 +60,9 @@ mod demi {
             self.validator = new_validator;
         }
 
-        /*********/
-        /* NODES */
-        /*********/
+        /********/
+        /* NODE */
+        /********/
         #[ink(message)]
         pub fn get_node(&self) -> AccountId {
             self.node.clone()
