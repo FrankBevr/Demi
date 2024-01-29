@@ -27,6 +27,7 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
     ContractIds.Greeter,
   );
   const { contract: contractDemi } = useRegisteredContract(ContractIds.Demi);
+
   /*********/
   /*GREETER*/
   /*********/
@@ -75,7 +76,7 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
             contractGreeter,
             "setMessage",
             {},
-            [message],
+            [activeAccount, contractGreeter, activeSigner, api, message],
           );
           getGreet();
           setM({ new_greet: "" });
@@ -162,17 +163,15 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
             activeAccount.address,
             contractDemi,
             "init",
-
             {},
             [],
           );
+          setIsInit(true);
           setI({ isInit: true });
-          setIsInit(true);
-          setIsInit(true);
         })();
       }),
     }),
-    [isInit, api, contractDemi],
+    [activeAccount, contractDemi, activeSigner, api, isInit],
   );
 
   const [owner, setOwner] = useState("");
@@ -204,7 +203,7 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
         })();
       }),
     }),
-    [owner],
+    [activeAccount, contractDemi, activeSigner, api, owner],
   );
 
   const [node, setNode] = useState("");
@@ -236,7 +235,7 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
         })();
       }),
     }),
-    [node],
+    [activeSigner, contractDemi, activeSigner, api, node],
   );
 
   const [validator, setValidator] = useState("");
@@ -268,22 +267,36 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
         })();
       }),
     }),
-    [validator],
+    [activeAccount, contractDemi, activeSigner, api, validator],
   );
 
 
   /******/
   /*READ*/
   /******/
-  /*TASKS*/
+  const [isInito, setIsInito] = useState<boolean>()
+  const [nodesArr, setNodesArr] = useState([""])
+  const [validatorsArr, setValidatorsArr] = useState([""])
+  const [tasksArr, setTasksArr] = useState([""])
   const [, setReadDemiAdv] = useControls("DEMI_READ", () => ({
-    nodes: "...",
-    validators: "...",
-    tasks: "...",
+    nodes: {
+      value: "ALL NODES",
+      options: nodesArr,
+    },
+    validators: {
+      value: "ALL VALIDATORS",
+      options: validatorsArr,
+    },
+    tasks: {
+      value: "ALL TASKS",
+      options: tasksArr,
+    },
+    isInito: false,
     get_nodes: button(() => getNodes()),
     get_validators: button(() => getValidators()),
     get_tasks: button(() => getTasks()),
-  }));
+    get_Init: button(() => getInit())
+  }), [isInito, nodesArr, validatorsArr, tasksArr]);
 
 
   const getNodes = async () => {
@@ -294,9 +307,8 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
       contractDemi,
       "get_nodes",
     );
-    console.log(output)
+    setNodesArr(output)
     if (isError) throw new Error(decodedOutput);
-    // setReadDemiAdv({ nodes: output });
   };
 
   const getValidators = async () => {
@@ -307,7 +319,7 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
       contractDemi,
       "get_validators",
     );
-    console.log(output)
+    setValidatorsArr(output)
     if (isError) throw new Error(decodedOutput);
     // setReadDemiAdv({ validators: output });
   };
@@ -320,7 +332,21 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
       contractDemi,
       "get_tasks",
     );
-    console.log(output)
+    setTasksArr(output)
+    if (isError) throw new Error(decodedOutput);
+    // setReadDemiAdv({ tasks: output });
+  };
+
+  const getInit = async () => {
+    if (!contractDemi || !api) return;
+    const result = await contractQuery(api, "", contractDemi, "get_init");
+    const { output, isError, decodedOutput } = decodeOutput(
+      result,
+      contractDemi,
+      "get_init",
+    );
+    setReadDemiAdv({ isInito: output })
+    setIsInito(output)
     if (isError) throw new Error(decodedOutput);
     // setReadDemiAdv({ tasks: output });
   };
@@ -329,7 +355,92 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
     getNodes();
     getValidators();
     getTasks()
+    getInit()
   }, [api, contractDemi]);
+
+  /*******/
+  /*WRITE*/
+  /*******/
+
+  const [newNode, setNewNode] = useState<string>();
+  const [newValidator, setNewValidator] = useState<string>();
+  const [newTask, setNewTask] = useState<string>();
+
+  const [, setNs] = useControls(
+    "DEMI_WRITE",
+    () => ({
+      new_nodes: {
+        value: "0x0000",
+        onChange: (c) => {
+          setNewNode(c);
+        },
+      },
+      addNode: button(() => {
+        if (!activeAccount || !contractDemi || !activeSigner || !api) {
+          return;
+        }
+        (async () => {
+          await contractTx(
+            api,
+            activeAccount.address,
+            contractDemi,
+            "add_node",
+            {},
+            [newNode],
+          );
+          setNs({ new_nodes: '' });
+          setNewNode('');
+        })();
+      }),
+      new_validators: {
+        value: "0x0000",
+        onChange: (c) => {
+          setNewNode(c);
+        },
+      },
+      addValidator: button(() => {
+        if (!activeAccount || !contractDemi || !activeSigner || !api) {
+          return;
+        }
+        (async () => {
+          await contractTx(
+            api,
+            activeAccount.address,
+            contractDemi,
+            "add_validator",
+            {},
+            [newNode],
+          );
+          setNs({ new_validators: '' });
+          setNewValidator('');
+        })();
+      }),
+      new_tasks: {
+        value: "",
+        onChange: (c) => {
+          setNewNode(c);
+        },
+      },
+      addTask: button(() => {
+        if (!activeAccount || !contractDemi || !activeSigner || !api) {
+          return;
+        }
+        (async () => {
+          await contractTx(
+            api,
+            activeAccount.address,
+            contractDemi,
+            "add_task",
+            {},
+            [newNode],
+          );
+          setNs({ new_tasks: '' });
+          setNewTask('');
+        })();
+      }),
+    }),
+    [activeAccount, contractDemi, activeSigner, api, newNode, newValidator, newTask],
+  );
 
   return null; // Render whatever you want or just return null if the component doesn't render anything.
 };
