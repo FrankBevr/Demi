@@ -13,6 +13,7 @@ mod demi {
         validators: Vec<AccountId>,
         nodes: Vec<AccountId>,
         tasks: Vec<String>,
+        is_init: bool,
     }
 
     impl Demi {
@@ -25,6 +26,7 @@ mod demi {
                 validators: Vec::new(),
                 nodes: Vec::new(),
                 tasks: Vec::new(),
+                is_init: false,
             }
         }
 
@@ -32,6 +34,7 @@ mod demi {
         pub fn init(&mut self) {
             if self.owner == AccountId::from([0xFF; 32]) {
                 self.owner = Self::env().caller();
+                self.is_init = true;
             }
         }
 
@@ -74,6 +77,14 @@ mod demi {
         #[ink(message)]
         pub fn set_node(&mut self, new_node: AccountId) {
             self.node = new_node
+        }
+
+        /********/
+        /* INIT */
+        /********/
+        #[ink(message)]
+        pub fn get_init(&self) -> bool {
+            self.is_init.clone()
         }
 
         /**************/
