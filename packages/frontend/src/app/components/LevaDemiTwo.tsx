@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
 import { ContractIds } from "@/deployments/deployments";
 import { ApiPromise } from "@polkadot/api";
 import { ContractPromise } from "@polkadot/api-contract";
@@ -30,11 +29,16 @@ const LevaDemiTwo: React.FC<LevaProps> = () => {
   /******/
 
   /*READ*/
+  const [isInit, setIsInit] = useState(false);
   const [nodesArr, setNodesArr] = useState([""])
   const [validatorsArr, setValidatorsArr] = useState([""])
   const [tasksArr, setTasksArr] = useState([""])
 
-  const [, setReadDemiAdv] = useControls("DEMITWO_READ", () => ({
+  const [, setReadDemiTwo] = useControls("DEMITWO_READ", () => ({
+    isInit: {
+      value: false,
+      disabled: true,
+    },
     nodes: {
       value: "ALL NODES",
       options: nodesArr,
@@ -50,7 +54,7 @@ const LevaDemiTwo: React.FC<LevaProps> = () => {
     get_nodes: button(() => getNodes()),
     get_validators: button(() => getValidators()),
     get_tasks: button(() => getTasks()),
-  }), [nodesArr, validatorsArr, tasksArr, api, activeAccount, activeSigner]);
+  }), [nodesArr, validatorsArr, tasksArr, isInit]);
 
   const getNodes = async () => {
     if (!contractDemi || !api) return;
@@ -85,13 +89,6 @@ const LevaDemiTwo: React.FC<LevaProps> = () => {
     setTasksArr(output)
   };
 
-
-  useEffect(() => {
-    getNodes();
-    getValidators();
-    getTasks()
-  }, [api, contractDemi]);
-
   /*******/
   /*WRITE*/
   /*******/
@@ -103,7 +100,7 @@ const LevaDemiTwo: React.FC<LevaProps> = () => {
   const [, setNs] = useControls(
     "DEMITWO_WRITE",
     () => ({
-      do_init: button(() => {
+      init: button(() => {
         if (!activeAccount || !contractDemi || !activeSigner || !api) {
           return;
         }
@@ -116,6 +113,8 @@ const LevaDemiTwo: React.FC<LevaProps> = () => {
             {},
             [],
           );
+          setIsInit(true);
+          setReadDemiTwo({ isInit: true });
         })();
       }),
       new_nodes: {
