@@ -18,7 +18,6 @@ CLOCK: [2024-01-12 Fri 13:15]--[2024-01-12 Fri 14:47] =>  1:32
   - [X] readjust Opti.md
   - [X] readjust Demi.md (ported)
   - [X] call it a day
-
 ** DONE [#B] Bare Setup - Saturday - 3:56 [4/4]
 :LOGBOOK:
 CLOCK: [2024-01-13 Sat 14:10]--[2024-01-13 Sat 14:59] =>  0:49
@@ -48,7 +47,6 @@ CLOCK: [2024-01-13 Sat 10:03]--[2024-01-13 Sat 10:54] =>  0:51
       - [X] importe, generate componetnt
     - [X] generate one
   - [X] add Figma to Github
-
 ** DONE [#B] Design - Sunday - 1:39 [8/8]
 :LOGBOOK:
 CLOCK: [2024-01-14 Sun 10:05]--[2024-01-14 Sun 10:22] =>  0:17
@@ -68,7 +66,6 @@ CLOCK: [2024-01-14 Sun 08:32]--[2024-01-14 Sun 09:54] =>  1:22
 - [X] create Landing Page, which current Design System
 - [X] clean up
 - [X] export, add to Github
-
 ** DONE [#B] Code - Landing Page - Sunday - 6:21 [19/19]
 :LOGBOOK:
 CLOCK: [2024-01-15 Mon 00:53]--[2024-01-15 Mon 00:58] =>  0:05
@@ -108,7 +105,7 @@ CLOCK: [2024-01-14 Sun 10:24]--[2024-01-14 Sun 11:10] =>  0:46
 - [X] build
 - [X] commit progress
 - [X] deploy draft (postpone, seems timeconsuming)
-** DONE CODE - Smart Contract Draft - Monday - 6:20 [10/10]
+** DONE [#A] CODE - Smart Contract Draft - Monday - 6:20 [10/10]
 :LOGBOOK:
 CLOCK: [2024-01-15 Mon 19:15]--[2024-01-15 Mon 20:05] =>  0:50
 CLOCK: [2024-01-15 Mon 17:36]--[2024-01-15 Mon 17:57] =>  0:21
@@ -163,7 +160,7 @@ CLOCK: [2024-01-15 Mon 10:10]--[2024-01-15 Mon 10:22] =>  0:12
               - [X] import alice
             - [X] w.i.p. (ported)
 
-** TODO [#A] CODE - Button Clicky - Tuesday - 1:47 [6/6]
+** DONE [#A] CODE - Button Clicky - Tuesday - 1:47 [6/6]
 :LOGBOOK:
 CLOCK: [2024-01-16 Tue 12:50]--[2024-01-16 Tue 13:05] =>  0:15
 CLOCK: [2024-01-16 Tue 12:19]--[2024-01-16 Tue 12:47] =>  0:28
@@ -177,16 +174,18 @@ CLOCK: [2024-01-16 Tue 10:51]--[2024-01-16 Tue 11:13] =>  0:22
 - [X] create new contract for testing
 - [X] read from contract and display it on Button Click
 - [X] write to contract on Button Click (ported)
-
-** TODO [#A] CODE - Button Clicky - Wednesday [9/10]
+** DONE [#A] CODE - Button Clicky - Wednesday - 6:11 [14/14]
 :LOGBOOK:
+CLOCK: [2024-01-17 Wed 20:28]--[2024-01-17 Wed 21:25] =>  0:57
+CLOCK: [2024-01-17 Wed 17:48]--[2024-01-17 Wed 19:23] =>  1:35
+CLOCK: [2024-01-17 Wed 16:59]--[2024-01-17 Wed 17:37] =>  0:38
+CLOCK: [2024-01-17 Wed 16:09]--[2024-01-17 Wed 16:39] =>  0:30
 CLOCK: [2024-01-17 Wed 14:04]--[2024-01-17 Wed 14:13] =>  0:09
 CLOCK: [2024-01-17 Wed 13:29]--[2024-01-17 Wed 14:03] =>  0:34
 CLOCK: [2024-01-17 Wed 12:32]--[2024-01-17 Wed 13:16] =>  0:44
 CLOCK: [2024-01-17 Wed 11:41]--[2024-01-17 Wed 12:14] =>  0:33
 CLOCK: [2024-01-17 Wed 11:03]--[2024-01-17 Wed 11:34] =>  0:31
 :END:
-
 - [X] write to contract on Button Click (ported)
 - [X] figure out how to make contracts deployment.ts file (ported)
 - [X] handle github 2fa without phone
@@ -198,4 +197,151 @@ CLOCK: [2024-01-17 Wed 11:03]--[2024-01-17 Wed 11:34] =>  0:31
   - [X] rewrite contracts scripts and make it works and get deployment
   - [X] rewrite frontend to make it work
 - [X] commit it nicley
-- [ ] add all current functions.
+- [X] add all current functions. (ported)
+- [X] try leva for a debug ui
+- [X] add read button to leva
+- [X] figure out how to keep state in sync with leva
+- [X] add a write state button (ported)
+** DONE [#A] CODE - Button Clicky - Thursday - 3:44 [7/7]
+:LOGBOOK:
+CLOCK: [2024-01-18 Thu 18:10]--[2024-01-18 Thu 19:01] =>  0:51
+CLOCK: [2024-01-18 Thu 17:32]--[2024-01-18 Thu 17:53] =>  0:21
+CLOCK: [2024-01-18 Thu 14:24]--[2024-01-18 Thu 14:45] =>  0:21
+CLOCK: [2024-01-18 Thu 13:52]--[2024-01-18 Thu 14:14] =>  0:22
+CLOCK: [2024-01-18 Thu 12:42]--[2024-01-18 Thu 13:48] =>  1:06
+CLOCK: [2024-01-18 Thu 11:09]--[2024-01-18 Thu 11:30] =>  0:21
+CLOCK: [2024-01-18 Thu 10:45]--[2024-01-18 Thu 11:07] =>  0:22
+:END:
+- [X] configure zellij
+- [X] try new colorscheme (failed )
+- [X] rewrite contract for better getters
+- [X] make leva work with getter function
+- [X] call with Botond
+
+- [X] add a write state button (ported again)
+- [X] add all current functions. (ported again)
+
+** DONE [#A] CODE - Button Clicky - Friday [6/6]
+:LOGBOOK:
+CLOCK: [2024-01-19 Fri 15:32]--[2024-01-19 Fri 15:51] =>  0:19
+CLOCK: [2024-01-19 Fri 15:12]--[2024-01-19 Fri 15:28] =>  0:16
+CLOCK: [2024-01-19 Fri 14:00]--[2024-01-19 Fri 14:45] =>  0:45
+CLOCK: [2024-01-19 Fri 13:04]--[2024-01-19 Fri 13:11] =>  0:07
+CLOCK: [2024-01-19 Fri 12:38]--[2024-01-19 Fri 13:03] =>  0:25
+CLOCK: [2024-01-19 Fri 12:29]--[2024-01-19 Fri 12:34] =>  0:05
+CLOCK: [2024-01-19 Fri 11:40]--[2024-01-19 Fri 12:27] =>  0:47
+:END:
+- [X] add a write state button (ported again)
+- [X] add all current functions. (ported again)
+  - [X] new()
+  - [X] init()
+  - [X] get_owner()
+  - [X] set_owner()
+  - [X] get_validator()
+  - [X] set_validator() (ported again)
+  - [X] get_node()
+  - [X] set_node() (ported again)
+- [X] group then in read and write function
+- [X] add argument to build command, --debug-on, write inkathon team
+- [X] find a solution to call from leva
+- [X] figure out how to update value nicely (ported)
+  - [X] there is transient
+  - [X] useCallback, doesnt non cool things, don't know how to avoid, yet
+
+** DONE [#A] Do Debug UI - Monday [4/4]
+:LOGBOOK:
+CLOCK: [2024-01-22 Mon 14:35]--[2024-01-22 Mon 16:05] =>  1:30
+CLOCK: [2024-01-22 Mon 13:47]--[2024-01-22 Mon 14:25] =>  0:38
+CLOCK: [2024-01-22 Mon 12:53]--[2024-01-22 Mon 13:31] =>  0:38
+CLOCK: [2024-01-22 Mon 11:53]--[2024-01-22 Mon 12:09] =>  0:17
+CLOCK: [2024-01-22 Mon 11:15]--[2024-01-22 Mon 11:32] =>  0:17
+:END:
+
+- [X] set_validator() (ported again again)
+- [X] set_node() (ported again again)
+- [X] figure out how to update value nicely (ported again)
+  - [X] there is transient
+  - [X] useCallback, doesnt non cool things, don't know how to avoid, yet
+- [X] repeat useHooks of react to find bug
+
+** DONE [#A] Do Debug UI - Tuesday [4/4]
+:LOGBOOK:
+CLOCK: [2024-01-23 Tue 14:25]--[2024-01-26 Fri 11:25] => 69:00
+CLOCK: [2024-01-23 Tue 13:12]--[2024-01-23 Tue 14:07] =>  0:55
+:END:
+- [X] set_validator() (ported again again)
+- [X] set_node() (ported again again)
+- [X] figure out how to update value nicely (ported again)
+  - [X] there is transient
+  - [X] useCallback, doesnt non cool things, don't know how to avoid, yet
+- [X] forgot to record what i actually did
+** DONE [#A] Do Debug UI - Wednesday [1/1]
+:LOGBOOK:
+CLOCK: [2024-01-24 Wed 14:25]--[2024-01-24 Wed 16:25] =>  2:00
+CLOCK: [2024-01-24 Wed 10:25]--[2024-01-24 Wed 12:25] =>  2:00
+:END:
+- [X] fix more bugs on Debug UI
+** DONE [#A] Make it Work - Friday [10/10]
+:LOGBOOK:
+CLOCK: [2024-01-26 Fri 18:21]--[2024-01-26 Fri 18:49] =>  0:28
+CLOCK: [2024-01-26 Fri 17:21]--[2024-01-26 Fri 18:13] =>  0:52
+CLOCK: [2024-01-26 Fri 16:06]--[2024-01-26 Fri 16:28] =>  0:22
+CLOCK: [2024-01-26 Fri 15:52]--[2024-01-26 Fri 16:06] =>  0:14
+CLOCK: [2024-01-26 Fri 15:08]--[2024-01-26 Fri 15:52] =>  0:44
+CLOCK: [2024-01-26 Fri 12:25]--[2024-01-26 Fri 14:01] =>  1:36
+CLOCK: [2024-01-26 Fri 11:29]--[2024-01-26 Fri 12:10] =>  0:41
+CLOCK: [2024-01-26 Fri 10:08]--[2024-01-26 Fri 11:01] =>  0:53
+:END:
+- [X] call with Botond, quick update
+- [X] delete debug, do it again
+- [X] copy structure from Greeter, maybe
+- [X] useState instead of other options
+- [X] lets goo make butttooon
+- [X] record result send to bottond
+- [X] throw into component
+- [X] add nodes, validator, tasks to contracts
+- [X] add read function to nodes, validator, tasks
+- [X] add write function to nodes, validators, tasks (ported)
+** DONE [#C] Fix PC - Saturday  [3/3]
+:LOGBOOK:
+CLOCK: [2024-01-27 Sat 10:01]--[2024-01-27 Sat 15:01] =>  5:00
+:END:
+- [X] PC got fucked up, fix it (ported)
+- [X] be frustated
+- [X] add write function to nodes, validators, tasks (ported)
+** DONE [#C] Fix PC - Sunday [3/3]
+:LOGBOOK:
+CLOCK: [2024-01-28 Sun 09:35]--[2024-01-28 Sun 11:18] =>  1:43
+:END:
+- [X] PC got fucked up, fix it (ported)
+- [X] be frustated
+- [X] add write function to nodes, validators, tasks (ported)
+
+** DONE [#A] Make it nicey [6/6]
+:LOGBOOK:
+CLOCK: [2024-01-29 Mon 20:13]--[2024-01-29 Mon 20:41] =>  0:28
+CLOCK: [2024-01-29 Mon 19:14]--[2024-01-29 Mon 20:10] =>  0:56
+CLOCK: [2024-01-29 Mon 17:32]--[2024-01-29 Mon 18:45] =>  1:13
+CLOCK: [2024-01-29 Mon 17:24]--[2024-01-29 Mon 17:32] =>  0:08
+:END:
+- [X] add write function to nodes, validators, tasks (ported)
+- [X] figuring where to spend the last hours
+- [X] add isInit to contract
+- [X] add tasks
+- [X] add nodes
+- [X] add validators
+** TODO [#A] Finish it up [7/7]
+:LOGBOOK:
+CLOCK: [2024-01-30 Tue 12:34]--[2024-01-30 Tue 12:46] =>  0:12
+CLOCK: [2024-01-30 Tue 11:08]--[2024-01-30 Tue 12:18] =>  1:10
+CLOCK: [2024-01-30 Tue 10:18]--[2024-01-30 Tue 11:00] =>  0:42
+CLOCK: [2024-01-30 Tue 08:34]--[2024-01-30 Tue 10:06] =>  1:32
+:END:
+- [X] Seperate it Milestones
+- [X] Create demiOne Contract
+- [X] Create demiTwo Contract
+- [X] add LevaGreeter Component
+- [X] add LevaDemiOne Component
+- [X] add LevaDemiTwo Component
+- [X] adjust configuration
+- [ ] commit everything nicely
