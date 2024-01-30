@@ -1,7 +1,7 @@
 [workspace]
-
 resolver = "1"
 members = [
-  "src/demi", 
-  "src/greeter"
+  "src/greeter",
+  "src/demione",
+  "src/demitwo", 
   ]
