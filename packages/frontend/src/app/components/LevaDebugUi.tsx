@@ -26,7 +26,7 @@ const LevaDebugUi: React.FC<LevaProps> = () => {
   const { contract: contractGreeter } = useRegisteredContract(
     ContractIds.Greeter,
   );
-  const { contract: contractDemi } = useRegisteredContract(ContractIds.Demi);
+  const { contract: contractDemi } = useRegisteredContract(ContractIds.DemiTwo);
 
   /*********/
   /*GREETER*/

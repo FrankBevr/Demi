@@ -30,7 +30,7 @@ const FunctionComp = ({
 
   const { api, activeAccount, activeSigner } = useInkathon();
   const { contract, address: contractAddress } = useRegisteredContract(
-    ContractIds.Demi,
+    ContractIds.DemiOne,
   );
 
   /* Get Flip */

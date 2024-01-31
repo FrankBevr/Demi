@@ -143,7 +143,7 @@ const LevaDemiTwo: React.FC<LevaProps> = () => {
       new_validators: {
         value: "0x0000",
         onChange: (c) => {
-          setNewNode(c);
+          setNewValidator(c);
         },
       },
       addValidator: button(() => {
@@ -166,7 +166,7 @@ const LevaDemiTwo: React.FC<LevaProps> = () => {
       new_tasks: {
         value: "",
         onChange: (c) => {
-          setNewNode(c);
+          setNewTask(c);
         },
       },
       addTask: button(() => {
