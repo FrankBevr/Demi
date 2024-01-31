@@ -330,8 +330,14 @@ CLOCK: [2024-01-29 Mon 17:24]--[2024-01-29 Mon 17:32] =>  0:08
 - [X] add tasks
 - [X] add nodes
 - [X] add validators
-** TODO [#A] Finish it up [7/7]
+** DONE [#A] Finish it up [15/15]
 :LOGBOOK:
+CLOCK: [2024-01-31 Wed 02:32]--[2024-01-31 Wed 03:12] =>  0:40
+CLOCK: [2024-01-31 Wed 01:46]--[2024-01-31 Wed 02:28] =>  0:42
+CLOCK: [2024-01-30 Tue 15:18]--[2024-01-30 Tue 15:27] =>  0:09
+CLOCK: [2024-01-30 Tue 15:13]--[2024-01-30 Tue 15:16] =>  0:03
+CLOCK: [2024-01-30 Tue 14:54]--[2024-01-30 Tue 15:13] =>  0:19
+CLOCK: [2024-01-30 Tue 12:39]--[2024-01-30 Tue 13:17] =>  0:38
 CLOCK: [2024-01-30 Tue 12:34]--[2024-01-30 Tue 12:46] =>  0:12
 CLOCK: [2024-01-30 Tue 11:08]--[2024-01-30 Tue 12:18] =>  1:10
 CLOCK: [2024-01-30 Tue 10:18]--[2024-01-30 Tue 11:00] =>  0:42
@@ -344,4 +350,14 @@ CLOCK: [2024-01-30 Tue 08:34]--[2024-01-30 Tue 10:06] =>  1:32
 - [X] add LevaDemiOne Component
 - [X] add LevaDemiTwo Component
 - [X] adjust configuration
-- [ ] commit everything nicely
+- [X] commit everything nicely
+- [X] test everything
+  - [X] test greeter
+  - [X] test demione
+  - [X] test demitwo
+- [X] record something, send to botond
+- [X] fix encountered demitwo bug
+- [X] write README.md
+- [X] record for submission
+- [X] upload
+- [X] call it a day
