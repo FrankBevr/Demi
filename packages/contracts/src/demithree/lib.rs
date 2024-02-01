@@ -20,8 +20,6 @@ mod demithree {
     #[ink(storage)]
     pub struct Demithree {
         owner: AccountId,
-        nodes: Vec<AccountId>,
-        validators: Vec<AccountId>,
         tasks: Mapping<u32, String>,
         task_count: u32,
         validated_tasks: Mapping<u32, ValdiationRating>,
@@ -38,8 +36,6 @@ mod demithree {
         pub fn new() -> Self {
             Self {
                 owner: AccountId::from([0xFF as u8; 32]),
-                nodes: Vec::new(),
-                validators: Vec::new(),
                 tasks: Mapping::new(),
                 task_count: 0,
                 validated_tasks: Mapping::new(),
@@ -80,26 +76,6 @@ mod demithree {
         }
 
         #[ink(message)]
-        pub fn add_node(&mut self, new_node: AccountId) {
-            self.nodes.push(new_node)
-        }
-
-        #[ink(message)]
-        pub fn get_nodes(&self) -> Vec<AccountId> {
-            self.nodes.clone()
-        }
-
-        #[ink(message)]
-        pub fn add_validator(&mut self, new_validator: AccountId) {
-            self.validators.push(new_validator)
-        }
-
-        #[ink(message)]
-        pub fn get_validators(&self) -> Vec<AccountId> {
-            self.validators.clone()
-        }
-
-        #[ink(message)]
         pub fn add_task(&mut self, new_task: String) {
             self.tasks.insert(self.task_count, &new_task);
             self.task_count += self.task_count + 1;
@@ -128,7 +104,7 @@ mod demithree {
         }
 
         #[ink(message)]
-        pub fn registered_validator(&mut self) {
+        pub fn register_validator(&mut self) {
             let caller = self.env().caller();
             self.registered_validator.push(caller)
         }
