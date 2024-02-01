@@ -3,14 +3,17 @@
 #[ink::contract]
 mod demithree {
     use ink::prelude::string::String;
+    use ink::prelude::string::ToString;
     use ink::prelude::vec::Vec;
+    use ink::storage::Mapping;
 
     #[ink(storage)]
     pub struct Demithree {
         owner: AccountId,
         nodes: Vec<AccountId>,
         validators: Vec<AccountId>,
-        tasks: Vec<String>,
+        tasks: Mapping<u32, String>,
+        task_count: u32,
         is_init: bool,
     }
 
@@ -21,7 +24,8 @@ mod demithree {
                 owner: AccountId::from([0xFF as u8; 32]),
                 nodes: Vec::new(),
                 validators: Vec::new(),
-                tasks: Vec::new(),
+                tasks: Mapping::new(),
+                task_count: 0,
                 is_init: false,
             }
         }
@@ -75,21 +79,22 @@ mod demithree {
 
         #[ink(message)]
         pub fn add_task(&mut self, new_task: String) {
-            self.tasks.push(new_task)
+            self.tasks.insert(self.task_count, &new_task);
+            self.task_count += self.task_count + 1;
         }
 
         #[ink(message)]
         pub fn get_task(&self, index: u32) -> String {
-            if index < self.tasks.len() as u32 {
-                let task = self.tasks[index as usize].clone();
-                return task;
-            }
-            "Doesnt exist".to_owned()
+            self.tasks.get(index).unwrap()
         }
 
         #[ink(message)]
-        pub fn get_tasks(&mut self) -> Vec<String> {
-            self.tasks.clone()
+        pub fn get_tasks(&mut self, index: u32) -> String {
+            if self.task_count < index {
+                self.tasks.get(index).unwrap()
+            } else {
+                "Not found".to_string()
+            }
         }
     }
 }
