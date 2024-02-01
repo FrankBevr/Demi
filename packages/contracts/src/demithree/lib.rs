@@ -3,7 +3,6 @@
 #[ink::contract]
 mod demithree {
     use ink::prelude::string::String;
-    use ink::prelude::string::ToString;
     use ink::prelude::vec::Vec;
     use ink::storage::Mapping;
 
@@ -28,6 +27,8 @@ mod demithree {
         validated_tasks: Mapping<u32, ValdiationRating>,
         validated_tasks_count: u32,
         is_init: bool,
+        registered_nodes: Vec<AccountId>,
+        registered_validator: Vec<AccountId>,
     }
 
     impl Demithree {
@@ -42,6 +43,8 @@ mod demithree {
                 validated_tasks: Mapping::new(),
                 validated_tasks_count: 0,
                 is_init: false,
+                registered_nodes: Vec::new(),
+                registered_validator: Vec::new(),
             }
         }
         #[ink(message)]
@@ -113,5 +116,18 @@ mod demithree {
         pub fn get_validated_rating(&mut self, index: u32) -> ValdiationRating {
             self.validated_tasks.get(&index).unwrap()
         }
+
+        #[ink(message)]
+        pub fn register_node(&mut self) {
+            let caller = self.env().caller();
+            self.registered_nodes.push(caller)
+        }
+
+        #[ink(message)]
+        pub fn registered_validator(&mut self) {
+            let caller = self.env().caller();
+            self.registered_validator.push(caller)
+        }
+        #[ink(message)]
     }
 }
