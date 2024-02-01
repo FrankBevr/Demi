@@ -72,5 +72,24 @@ mod demithree {
         pub fn get_validators(&self) -> Vec<AccountId> {
             self.validators.clone()
         }
+
+        #[ink(message)]
+        pub fn add_task(&mut self, new_task: String) {
+            self.tasks.push(new_task)
+        }
+
+        #[ink(message)]
+        pub fn get_task(&self, index: u32) -> String {
+            if index < self.tasks.len() as u32 {
+                let task = self.tasks[index as usize].clone();
+                return task;
+            }
+            "Doesnt exist".to_owned()
+        }
+
+        #[ink(message)]
+        pub fn get_tasks(&mut self) -> Vec<String> {
+            self.tasks.clone()
+        }
     }
 }
