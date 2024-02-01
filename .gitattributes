@@ -1,0 +1,8 @@
+# Display TypeScript files
+*.ts linguist-language=TypeScript
+
+# Display Rust files
+*.rs linguist-language=Rust
+
+# Ignore all other files
+* linguist-vendored
