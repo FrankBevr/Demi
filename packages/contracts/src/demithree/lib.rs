@@ -104,15 +104,6 @@ mod demithree {
         }
 
         #[ink(message)]
-        pub fn get_tasks(&mut self, index: u32) -> String {
-            if self.task_count < index {
-                self.tasks.get(index).unwrap()
-            } else {
-                "Not found".to_string()
-            }
-        }
-
-        #[ink(message)]
         pub fn validate_task(&mut self, index: u32, rating: ValdiationRating) {
             self.validated_tasks.insert(index, &rating);
             self.validated_tasks_count += 1;
