@@ -1,3 +1,6 @@
+> ⚠️ `git checkout deadline` to get the status add submission deadline  
+> ℹ️ `git log --oneline` to see the changes  
+
 <div align="center">
 <img src="./packages/frontend/public/images/Logo-black.png" alt="logo" height="120" />
 </div>

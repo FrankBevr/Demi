@@ -361,3 +361,10 @@ CLOCK: [2024-01-30 Tue 08:34]--[2024-01-30 Tue 10:06] =>  1:32
 - [X] record for submission
 - [X] upload
 - [X] call it a day
+
+** TODO [#C] Throw 4 days more in [1/1]
+:LOGBOOK:
+CLOCK: [2024-02-01 Thu 11:25]--[2024-02-01 Thu 11:34] =>  0:09
+:END:
+- [X] fix bug with tasks
+- [ ] write demithree
