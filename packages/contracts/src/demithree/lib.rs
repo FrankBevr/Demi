@@ -40,5 +40,17 @@ mod demithree {
         pub fn get_init(&mut self) -> bool {
             self.is_init
         }
+
+        #[ink(message)]
+        pub fn change_owner(&mut self, new_owner: AccountId) {
+            if self.owner == self.env().caller() {
+                self.owner = new_owner
+            }
+        }
+
+        #[ink(message)]
+        pub fn get_owner(&self) -> AccountId {
+            self.owner
+        }
     }
 }
