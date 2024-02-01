@@ -29,6 +29,8 @@ mod demithree {
         is_init: bool,
         registered_nodes: Vec<AccountId>,
         registered_validator: Vec<AccountId>,
+        approved_nodes: Vec<AccountId>,
+        approved_validator: Vec<AccountId>,
     }
 
     impl Demithree {
@@ -45,6 +47,8 @@ mod demithree {
                 is_init: false,
                 registered_nodes: Vec::new(),
                 registered_validator: Vec::new(),
+                approved_nodes: Vec::new(),
+                approved_validator: Vec::new(),
             }
         }
         #[ink(message)]
@@ -128,6 +132,15 @@ mod demithree {
             let caller = self.env().caller();
             self.registered_validator.push(caller)
         }
+
         #[ink(message)]
+        pub fn unregister_node(&mut self, node: AccountId) {
+            self.registered_nodes.retain(|&x| x != node);
+        }
+
+        #[ink(message)]
+        pub fn unregister_validator(&mut self, validator: AccountId) {
+            self.registered_validator.retain(|&x| x != validator);
+        }
     }
 }
