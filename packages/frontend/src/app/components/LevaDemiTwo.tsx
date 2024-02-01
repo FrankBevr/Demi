@@ -180,7 +180,7 @@ const LevaDemiTwo: React.FC<LevaProps> = () => {
             contractDemi,
             "add_task",
             {},
-            [newNode],
+            [newTask],
           );
           setNs({ new_tasks: '' });
           setNewTask('');
