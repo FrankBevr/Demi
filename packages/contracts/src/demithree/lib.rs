@@ -111,5 +111,16 @@ mod demithree {
                 "Not found".to_string()
             }
         }
+
+        #[ink(message)]
+        pub fn validate_task(&mut self, index: u32, rating: ValdiationRating) {
+            self.validated_tasks.insert(index, &rating);
+            self.validated_tasks_count += 1;
+        }
+
+        #[ink(message)]
+        pub fn get_validated_rating(&mut self, index: u32) -> ValdiationRating {
+            self.validated_tasks.get(&index).unwrap()
+        }
     }
 }
