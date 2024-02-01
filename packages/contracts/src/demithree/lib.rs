@@ -52,5 +52,15 @@ mod demithree {
         pub fn get_owner(&self) -> AccountId {
             self.owner
         }
+
+        #[ink(message)]
+        pub fn add_node(&mut self, new_node: AccountId) {
+            self.nodes.push(new_node)
+        }
+
+        #[ink(message)]
+        pub fn get_nodes(&self) -> Vec<AccountId> {
+            self.nodes.clone()
+        }
     }
 }
