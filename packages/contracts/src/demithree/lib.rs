@@ -118,5 +118,45 @@ mod demithree {
         pub fn unregister_validator(&mut self, validator: AccountId) {
             self.registered_validator.retain(|&x| x != validator);
         }
+
+        #[ink(message)]
+        pub fn approve_node(&mut self, node: AccountId) {
+            if self.env().caller() != self.owner {
+                return;
+            }
+
+            let node_clone = node.clone();
+            let index = self
+                .registered_nodes
+                .iter()
+                .position(|x| x.clone() == node_clone);
+            match index {
+                Some(index) => {
+                    self.registered_nodes.remove(index);
+                    self.approved_nodes.push(node);
+                }
+                None => {}
+            }
+        }
+
+        #[ink(message)]
+        pub fn approved_validator(&mut self, validator: AccountId) {
+            if self.env().caller() != self.owner {
+                return;
+            }
+
+            let node_clone = validator.clone();
+            let index = self
+                .registered_validator
+                .iter()
+                .position(|x| x.clone() == node_clone);
+            match index {
+                Some(index) => {
+                    self.registered_validator.remove(index);
+                    self.approved_validator.push(validator);
+                }
+                None => {}
+            }
+        }
     }
 }
