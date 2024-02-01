@@ -1,8 +1,8 @@
-# Display TypeScript files
-*.ts linguist-language=TypeScript
+packages/docs/* linguist-vendored
+packages/uiux/* linguist-vendored
 
-# Display Rust files
-*.rs linguist-language=Rust
-
-# Ignore all other files
-* linguist-vendored
+*.html linguist-detectable=false
+*.js linguist-detectable=false
+*.css linguist-detectable=false
+*.sh linguist-detectable=false
+*.tex linguist-detectable=false
