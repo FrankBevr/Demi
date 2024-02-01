@@ -4,4 +4,5 @@ members = [
   "src/greeter",
   "src/demione",
   "src/demitwo", 
+  "src/demithree", 
   ]
