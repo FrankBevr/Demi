@@ -47,8 +47,6 @@ mod demithree {
                 approved_validator: Vec::new(),
             }
         }
-        #[ink(message)]
-        pub fn empty_message(&self) {}
 
         #[ink(message)]
         pub fn init(&mut self) {
