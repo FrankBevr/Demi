@@ -7,6 +7,17 @@ mod demithree {
     use ink::prelude::vec::Vec;
     use ink::storage::Mapping;
 
+    #[derive(Clone, Copy, scale::Decode, scale::Encode)]
+    #[cfg_attr(
+        feature = "std",
+        derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
+    )]
+    pub enum ValdiationRating {
+        GOOD,
+        NORMAL,
+        BAD,
+    }
+
     #[ink(storage)]
     pub struct Demithree {
         owner: AccountId,
@@ -14,6 +25,8 @@ mod demithree {
         validators: Vec<AccountId>,
         tasks: Mapping<u32, String>,
         task_count: u32,
+        validated_tasks: Mapping<u32, ValdiationRating>,
+        validated_tasks_count: u32,
         is_init: bool,
     }
 
@@ -26,6 +39,8 @@ mod demithree {
                 validators: Vec::new(),
                 tasks: Mapping::new(),
                 task_count: 0,
+                validated_tasks: Mapping::new(),
+                validated_tasks_count: 0,
                 is_init: false,
             }
         }
