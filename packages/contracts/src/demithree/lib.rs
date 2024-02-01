@@ -62,5 +62,15 @@ mod demithree {
         pub fn get_nodes(&self) -> Vec<AccountId> {
             self.nodes.clone()
         }
+
+        #[ink(message)]
+        pub fn add_validator(&mut self, new_validator: AccountId) {
+            self.validators.push(new_validator)
+        }
+
+        #[ink(message)]
+        pub fn get_validators(&self) -> Vec<AccountId> {
+            self.validators.clone()
+        }
     }
 }
