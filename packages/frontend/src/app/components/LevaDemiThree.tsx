@@ -14,7 +14,9 @@ interface LevaProps {
 }
 const LevaDemiThree: React.FC<LevaProps> = () => {
   const { api, activeAccount, activeSigner } = useInkathon();
-  const { contract: contractGreeter } = useRegisteredContract(ContractIds.DemiThree);
+  const { contract: contractGreeter } = useRegisteredContract(
+    ContractIds.DemiThree,
+  );
 
   /***********/
   /*DEMITHREE*/
@@ -32,6 +34,6 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
     some_write_button: button(() => console.log("a button is pressed")),
   }));
 
-  return null
-}
-export default LevaDemiThree
+  return null;
+};
+export default LevaDemiThree;

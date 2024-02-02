@@ -23,12 +23,13 @@ interface LevaProps {
 
 const LevaDemiOne: React.FC<LevaProps> = () => {
   const { api, activeAccount, activeSigner } = useInkathon();
-  const { contract: contractDemiOne } = useRegisteredContract(ContractIds.DemiOne);
+  const { contract: contractDemiOne } = useRegisteredContract(
+    ContractIds.DemiOne,
+  );
 
-
-  /******/
-  /*DEMI*/
-  /******/
+  /*********/
+  /*DEMIONE*/
+  /*********/
 
   /*READ*/
   const [, setReadDemi] = useControls("DEMIONE_READ", () => ({
@@ -74,7 +75,16 @@ const LevaDemiOne: React.FC<LevaProps> = () => {
       },
       change_validator: button(() => change_validator()),
     }),
-    [activeAccount, contractDemiOne, activeSigner, api, isInit, owner, node, validator],
+    [
+      activeAccount,
+      contractDemiOne,
+      activeSigner,
+      api,
+      isInit,
+      owner,
+      node,
+      validator,
+    ],
   );
 
   /*READ Functions*/
@@ -104,7 +114,12 @@ const LevaDemiOne: React.FC<LevaProps> = () => {
 
   const getValidator = async () => {
     if (!contractDemiOne || !api) return;
-    const result = await contractQuery(api, "", contractDemiOne, "get_validator");
+    const result = await contractQuery(
+      api,
+      "",
+      contractDemiOne,
+      "get_validator",
+    );
     const { output, isError, decodedOutput } = decodeOutput(
       result,
       contractDemiOne,
@@ -135,7 +150,7 @@ const LevaDemiOne: React.FC<LevaProps> = () => {
     );
     setIsInit(true);
     setI({ isInit: true });
-  }
+  };
 
   const change_owner = async () => {
     if (!activeAccount || !contractDemiOne || !activeSigner || !api) {
@@ -152,7 +167,7 @@ const LevaDemiOne: React.FC<LevaProps> = () => {
     getOwner();
     setI({ new_owner: "" });
     setOwner("");
-  }
+  };
 
   const change_node = async () => {
     if (!activeAccount || !contractDemiOne || !activeSigner || !api) {
@@ -169,7 +184,7 @@ const LevaDemiOne: React.FC<LevaProps> = () => {
     getNode();
     setI({ new_node: "" });
     setNode("");
-  }
+  };
 
   const change_validator = async () => {
     if (!activeAccount || !contractDemiOne || !activeSigner || !api) {
@@ -186,7 +201,7 @@ const LevaDemiOne: React.FC<LevaProps> = () => {
     getValidator();
     setI({ new_validator: "" });
     setValidator("");
-  }
+  };
   return null;
 };
 

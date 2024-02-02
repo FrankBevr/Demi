@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { ContractIds } from "@/deployments/deployments";
 import { ApiPromise } from "@polkadot/api";
 import { ContractPromise } from "@polkadot/api-contract";
@@ -22,7 +23,9 @@ interface LevaProps {
 
 const LevaGreeter: React.FC<LevaProps> = () => {
   const { api, activeAccount, activeSigner } = useInkathon();
-  const { contract: contractGreeter } = useRegisteredContract(ContractIds.Greeter);
+  const { contract: contractGreeter } = useRegisteredContract(
+    ContractIds.Greeter,
+  );
 
   /*********/
   /*GREETER*/
@@ -83,7 +86,7 @@ const LevaGreeter: React.FC<LevaProps> = () => {
     getGreet();
     setM({ new_greet: "" });
     setMessage("");
-  }
+  };
 
   return null;
 };
