@@ -361,10 +361,51 @@ CLOCK: [2024-01-30 Tue 08:34]--[2024-01-30 Tue 10:06] =>  1:32
 - [X] record for submission
 - [X] upload
 - [X] call it a day
-
-** TODO [#C] Throw 4 days more in [1/1]
+** DONE [#C] Throw 4 days more in [28/28]
 :LOGBOOK:
+CLOCK: [2024-02-01 Thu 16:04]--[2024-02-01 Thu 16:14] =>  0:10
+CLOCK: [2024-02-01 Thu 15:11]--[2024-02-01 Thu 16:04] =>  0:53
+CLOCK: [2024-02-01 Thu 14:32]--[2024-02-01 Thu 14:37] =>  0:05
+CLOCK: [2024-02-01 Thu 13:34]--[2024-02-01 Thu 14:11] =>  0:37
+CLOCK: [2024-02-01 Thu 12:35]--[2024-02-01 Thu 13:29] =>  0:54
+CLOCK: [2024-02-01 Thu 11:38]--[2024-02-01 Thu 12:05] =>  0:27
 CLOCK: [2024-02-01 Thu 11:25]--[2024-02-01 Thu 11:34] =>  0:09
 :END:
 - [X] fix bug with tasks
-- [ ] write demithree
+- [X] add .gitattributes
+- [X] clean up root repo
+- [X] write demithree
+  - [X] setup new cargo contract
+  - [X] write deployscript
+  - [X] add to workspace
+  - [X] variables-
+- [X] initliase Throw4DaysMoreIn - Journey
+- [X] fix task bug in LevaDemiTwo.tsx
+- [X] add .gitattributes, only .ts and .rs
+- [X] fix, gh doesnt pick it up
+- [X] rm .rtx.toml && rm .netlify.toml
+- [X] intialise demithree
+- [X] add demithree to Workspace
+- [X] add deployscript 4 demithree
+- [X] test deployments
+- [X] add struct, init(), get_init()
+- [X] add change_owner(), get_owner()
+- [X] add add_node(), get_nodes()
+- [X] add add_validator(), get_validators()
+- [X] add add_task(), gets_task(), get_tasks()
+- [X] update tasks to Mapping
+- [X] add ValidationRating, validated_tasks, validated_tasks_count
+- [X] add validate_task(), get_validated_rating()
+- [X] rm get_tasks()
+- [X] add registered_nodes, registered_validators
+- [X] add approved_nodes, approved_validator
+- [X] rm nodes, validators, getters, adders
+- [X] add approve_node(), approve_validator()
+- [X] rm empty_message()
+- [X] rearange in read/write section
+
+** TODO [#C] Throw 4 days more in [/]
+:LOGBOOK:
+CLOCK: [2024-02-02 Fri 09:12]--[2024-02-02 Fri 09:24] =>  0:12
+:END:
+- [ ] grab a coffee
