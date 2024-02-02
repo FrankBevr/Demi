@@ -34,6 +34,23 @@ const LevaGreeter: React.FC<LevaProps> = () => {
     get_greet: button(() => getGreet()),
   }));
 
+  /*WRITE*/
+  const [message, setMessage] = useState("");
+  const [, setM] = useControls(
+    "GREETER_WRITE",
+    () => ({
+      new_greet: {
+        value: "Hoi!",
+        onChange: (c) => {
+          setMessage(c);
+        },
+      },
+      change_greet: button(() => change_greet()),
+    }),
+    [message, activeAccount, contractGreeter, activeSigner, api],
+  );
+
+  /*READ Functions*/
   const getGreet = async () => {
     if (!contractGreeter || !api) return;
     const result = await contractQuery(api, "", contractGreeter, "greet");
@@ -50,38 +67,23 @@ const LevaGreeter: React.FC<LevaProps> = () => {
     getGreet();
   }, [api, contractGreeter]);
 
-  /*WRITE*/
-  const [message, setMessage] = useState("");
-  const [, setM] = useControls(
-    "GREETER_WRITE",
-    () => ({
-      new_greet: {
-        value: "Hoi!",
-        onChange: (c) => {
-          setMessage(c);
-        },
-      },
-      change_greet: button(() => {
-        if (!activeAccount || !contractGreeter || !activeSigner || !api) {
-          return;
-        }
-        (async () => {
-          await contractTx(
-            api,
-            activeAccount.address,
-            contractGreeter,
-            "setMessage",
-            {},
-            [message],
-          );
-          getGreet();
-          setM({ new_greet: "" });
-          setMessage("");
-        })();
-      }),
-    }),
-    [message, activeAccount, contractGreeter, activeSigner, api],
-  );
+  /*WRITE Functions*/
+  const change_greet = async () => {
+    if (!activeAccount || !contractGreeter || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractGreeter,
+      "setMessage",
+      {},
+      [message],
+    );
+    getGreet();
+    setM({ new_greet: "" });
+    setMessage("");
+  }
 
   return null;
 };
