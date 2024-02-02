@@ -71,6 +71,22 @@ mod demithree {
         pub fn get_validated_rating(&mut self, index: u32) -> ValdiationRating {
             self.validated_tasks.get(&index).unwrap()
         }
+        #[ink(message)]
+        pub fn get_registered_nodes(&self) -> Vec<AccountId> {
+            self.registered_nodes.clone()
+        }
+        #[ink(message)]
+        pub fn get_registered_validators(&self) -> Vec<AccountId> {
+            self.registered_validator.clone()
+        }
+        #[ink(message)]
+        pub fn get_approved_nodes(&self) -> Vec<AccountId> {
+            self.approved_nodes.clone()
+        }
+        #[ink(message)]
+        pub fn get_approved_validators(&self) -> Vec<AccountId> {
+            self.approved_validators.clone()
+        }
 
         /*******/
         /*WRITE*/
@@ -149,7 +165,7 @@ mod demithree {
             match index {
                 Some(index) => {
                     self.registered_validator.remove(index);
-                    self.approved_validator.push(validator);
+                    self.approved_validators.push(validator);
                 }
                 None => {}
             }
