@@ -1,3 +1,7 @@
+### Deployments ###
+# Its good to have it, but to have them in my githistory seems annyoing
+deployments/
+
 ### Rust ###
 
 # Ignore build artifacts from the local tests sub-crate.
