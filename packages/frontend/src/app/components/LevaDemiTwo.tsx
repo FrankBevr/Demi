@@ -56,6 +56,45 @@ const LevaDemiTwo: React.FC<LevaProps> = () => {
     get_tasks: button(() => getTasks()),
   }), [nodesArr, validatorsArr, tasksArr, isInit]);
 
+
+  /*******/
+  /*WRITE*/
+  /*******/
+
+  const [newNode, setNewNode] = useState<string>();
+  const [newValidator, setNewValidator] = useState<string>();
+  const [newTask, setNewTask] = useState<string>();
+
+  const [, setNs] = useControls(
+    "DEMITWO_WRITE",
+    () => ({
+      init: button(() => init()),
+      new_nodes: {
+        value: "0x0000",
+        onChange: (c) => {
+          setNewNode(c);
+        },
+      },
+      addNode: button(() => add_node()),
+      new_validators: {
+        value: "0x0000",
+        onChange: (c) => {
+          setNewValidator(c);
+        },
+      },
+      addValidator: button(() => add_validator()),
+      new_tasks: {
+        value: "",
+        onChange: (c) => {
+          setNewTask(c);
+        },
+      },
+      addTask: button(() => add_task()),
+    }),
+    [activeAccount, contractDemi, activeSigner, api, newNode, newValidator, newTask],
+  );
+
+  /*READ Function*/
   const getNodes = async () => {
     if (!contractDemi || !api) return;
     const result = await contractQuery(api, "", contractDemi, "get_nodes");
@@ -89,106 +128,69 @@ const LevaDemiTwo: React.FC<LevaProps> = () => {
     setTasksArr(output)
   };
 
-  /*******/
-  /*WRITE*/
-  /*******/
+  /*WRITE Functions*/
+  const init = async () => {
+    if (!activeAccount || !contractDemi || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemi,
+      "init",
+      {},
+      [],
+    );
+    setIsInit(true);
+    setReadDemiTwo({ isInit: true });
+  }
 
-  const [newNode, setNewNode] = useState<string>();
-  const [newValidator, setNewValidator] = useState<string>();
-  const [newTask, setNewTask] = useState<string>();
+  const add_node = async () => {
+    if (!activeAccount || !contractDemi || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemi,
+      "add_node",
+      {},
+      [newNode],
+    );
+    setNs({ new_nodes: '' });
+    setNewNode('');
+  }
+  const add_validator = async () => {
+    if (!activeAccount || !contractDemi || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemi,
+      "add_validator",
+      {},
+      [newNode],
+    );
+    setNs({ new_validators: '' });
+    setNewValidator('');
+  }
 
-  const [, setNs] = useControls(
-    "DEMITWO_WRITE",
-    () => ({
-      init: button(() => {
-        if (!activeAccount || !contractDemi || !activeSigner || !api) {
-          return;
-        }
-        (async () => {
-          await contractTx(
-            api,
-            activeAccount.address,
-            contractDemi,
-            "init",
-            {},
-            [],
-          );
-          setIsInit(true);
-          setReadDemiTwo({ isInit: true });
-        })();
-      }),
-      new_nodes: {
-        value: "0x0000",
-        onChange: (c) => {
-          setNewNode(c);
-        },
-      },
-      addNode: button(() => {
-        if (!activeAccount || !contractDemi || !activeSigner || !api) {
-          return;
-        }
-        (async () => {
-          await contractTx(
-            api,
-            activeAccount.address,
-            contractDemi,
-            "add_node",
-            {},
-            [newNode],
-          );
-          setNs({ new_nodes: '' });
-          setNewNode('');
-        })();
-      }),
-      new_validators: {
-        value: "0x0000",
-        onChange: (c) => {
-          setNewValidator(c);
-        },
-      },
-      addValidator: button(() => {
-        if (!activeAccount || !contractDemi || !activeSigner || !api) {
-          return;
-        }
-        (async () => {
-          await contractTx(
-            api,
-            activeAccount.address,
-            contractDemi,
-            "add_validator",
-            {},
-            [newNode],
-          );
-          setNs({ new_validators: '' });
-          setNewValidator('');
-        })();
-      }),
-      new_tasks: {
-        value: "",
-        onChange: (c) => {
-          setNewTask(c);
-        },
-      },
-      addTask: button(() => {
-        if (!activeAccount || !contractDemi || !activeSigner || !api) {
-          return;
-        }
-        (async () => {
-          await contractTx(
-            api,
-            activeAccount.address,
-            contractDemi,
-            "add_task",
-            {},
-            [newTask],
-          );
-          setNs({ new_tasks: '' });
-          setNewTask('');
-        })();
-      }),
-    }),
-    [activeAccount, contractDemi, activeSigner, api, newNode, newValidator, newTask],
-  );
+  const add_task = async () => {
+    if (!activeAccount || !contractDemi || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemi,
+      "add_task",
+      {},
+      [newTask],
+    );
+    setNs({ new_tasks: '' });
+    setNewTask('');
+  }
 
   return null;
 };
