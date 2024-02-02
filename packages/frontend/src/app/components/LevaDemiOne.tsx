@@ -39,7 +39,45 @@ const LevaDemiOne: React.FC<LevaProps> = () => {
     get_node: button(() => getNode()),
     get_validator: button(() => getValidator()),
   }));
+  /*WRITE*/
+  const [isInit, setIsInit] = useState(false);
+  const [owner, setOwner] = useState("");
+  const [node, setNode] = useState("");
+  const [validator, setValidator] = useState("");
+  const [, setI] = useControls(
+    "DEMIONE_WRITE",
+    () => ({
+      isInit: {
+        value: false,
+        disabled: true,
+      },
+      init: button(() => init()),
+      new_owner: {
+        value: "0x0000",
+        onChange: (c) => {
+          setOwner(c);
+        },
+      },
+      change_owner: button(() => change_owner()),
+      new_node: {
+        value: "0x0000",
+        onChange: (c) => {
+          setNode(c);
+        },
+      },
+      change_node: button(() => change_node()),
+      new_validator: {
+        value: "0x0000",
+        onChange: (c) => {
+          setValidator(c);
+        },
+      },
+      change_validator: button(() => change_validator()),
+    }),
+    [activeAccount, contractDemiOne, activeSigner, api, isInit, owner, node, validator],
+  );
 
+  /*READ Functions*/
   const getOwner = async () => {
     if (!contractDemiOne || !api) return;
     const result = await contractQuery(api, "", contractDemiOne, "get_owner");
@@ -82,132 +120,73 @@ const LevaDemiOne: React.FC<LevaProps> = () => {
     getValidator();
   }, [api, contractDemiOne]);
 
-  /*WRITE*/
-  const [isInit, setIsInit] = useState(false);
-  const [, setI] = useControls(
-    "DEMIONE_WRITE",
-    () => ({
-      isInit: {
-        value: false,
-        disabled: true,
-      },
-      init: button(() => {
-        if (!activeAccount || !contractDemiOne || !activeSigner || !api) {
-          return;
-        }
-        (async () => {
-          await contractTx(
-            api,
-            activeAccount.address,
-            contractDemiOne,
-            "init",
-            {},
-            [],
-          );
-          setIsInit(true);
-          setI({ isInit: true });
-        })();
-      }),
-    }),
-    [activeAccount, contractDemiOne, activeSigner, api, isInit],
-  );
+  /*WRITE Functions*/
+  const init = async () => {
+    if (!activeAccount || !contractDemiOne || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiOne,
+      "init",
+      {},
+      [],
+    );
+    setIsInit(true);
+    setI({ isInit: true });
+  }
 
-  const [owner, setOwner] = useState("");
-  const [, setO] = useControls(
-    "DEMIONE_WRITE",
-    () => ({
-      new_owner: {
-        value: "0x0000",
-        onChange: (c) => {
-          setOwner(c);
-        },
-      },
-      change_owner: button(() => {
-        if (!activeAccount || !contractDemiOne || !activeSigner || !api) {
-          return;
-        }
-        (async () => {
-          await contractTx(
-            api,
-            activeAccount.address,
-            contractDemiOne,
-            "set_owner",
-            {},
-            [owner],
-          );
-          getOwner();
-          setO({ new_owner: "" });
-          setOwner("");
-        })();
-      }),
-    }),
-    [activeAccount, contractDemiOne, activeSigner, api, owner],
-  );
+  const change_owner = async () => {
+    if (!activeAccount || !contractDemiOne || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiOne,
+      "set_owner",
+      {},
+      [owner],
+    );
+    getOwner();
+    setI({ new_owner: "" });
+    setOwner("");
+  }
 
-  const [node, setNode] = useState("");
-  const [, setN] = useControls(
-    "DEMIONE_WRITE",
-    () => ({
-      new_node: {
-        value: "0x0000",
-        onChange: (c) => {
-          setNode(c);
-        },
-      },
-      change_node: button(() => {
-        if (!activeAccount || !contractDemiOne || !activeSigner || !api) {
-          return;
-        }
-        (async () => {
-          await contractTx(
-            api,
-            activeAccount.address,
-            contractDemiOne,
-            "set_node",
-            {},
-            [node],
-          );
-          getNode();
-          setN({ new_node: "" });
-          setNode("");
-        })();
-      }),
-    }),
-    [activeSigner, contractDemiOne, activeSigner, api, node],
-  );
+  const change_node = async () => {
+    if (!activeAccount || !contractDemiOne || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiOne,
+      "set_node",
+      {},
+      [node],
+    );
+    getNode();
+    setI({ new_node: "" });
+    setNode("");
+  }
 
-  const [validator, setValidator] = useState("");
-  const [, setV] = useControls(
-    "DEMIONE_WRITE",
-    () => ({
-      new_validator: {
-        value: "0x0000",
-        onChange: (c) => {
-          setValidator(c);
-        },
-      },
-      change_validator: button(() => {
-        if (!activeAccount || !contractDemiOne || !activeSigner || !api) {
-          return;
-        }
-        (async () => {
-          await contractTx(
-            api,
-            activeAccount.address,
-            contractDemiOne,
-            "set_validator",
-            {},
-            [validator],
-          );
-          getValidator();
-          setV({ new_validator: "" });
-          setValidator("");
-        })();
-      }),
-    }),
-    [activeAccount, contractDemiOne, activeSigner, api, validator],
-  );
-
+  const change_validator = async () => {
+    if (!activeAccount || !contractDemiOne || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiOne,
+      "set_validator",
+      {},
+      [validator],
+    );
+    getValidator();
+    setI({ new_validator: "" });
+    setValidator("");
+  }
   return null;
 };
 
