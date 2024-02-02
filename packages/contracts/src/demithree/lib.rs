@@ -11,7 +11,7 @@ mod demithree {
         feature = "std",
         derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
     )]
-    pub enum ValdiationRating {
+    pub enum ValidationRating {
         GOOD,
         NORMAL,
         BAD,
@@ -29,8 +29,8 @@ mod demithree {
         //Task Managment
         tasks: Mapping<u32, String>,
         task_count: u32,
-        validated_tasks: Mapping<u32, ValdiationRating>,
-        validated_tasks_count: u32,
+        validated_tasks: Mapping<u32, ValidationRating>,
+        validated_task_count: u32,
 
         //Miscellaneous
         is_init: bool,
@@ -40,36 +40,28 @@ mod demithree {
         #[ink(constructor)]
         pub fn new() -> Self {
             Self {
+                //Actors
                 owner: AccountId::from([0xFF as u8; 32]),
-                tasks: Mapping::new(),
-                task_count: 0,
-                validated_tasks: Mapping::new(),
-                validated_tasks_count: 0,
-                is_init: false,
                 registered_nodes: Vec::new(),
                 registered_validators: Vec::new(),
                 approved_nodes: Vec::new(),
                 approved_validators: Vec::new(),
+                //Task Managment
+                tasks: Mapping::new(),
+                task_count: 0,
+                validated_tasks: Mapping::new(),
+                validated_task_count: 0,
+                //Miscellaneous
+                is_init: false,
             }
         }
         /******/
         /*READ*/
         /******/
-        #[ink(message)]
-        pub fn get_init(&mut self) -> bool {
-            self.is_init
-        }
+        /*ACTORS*/
         #[ink(message)]
         pub fn get_owner(&self) -> AccountId {
             self.owner
-        }
-        #[ink(message)]
-        pub fn get_task(&self, index: u32) -> String {
-            self.tasks.get(index).unwrap()
-        }
-        #[ink(message)]
-        pub fn get_validated_rating(&mut self, index: u32) -> ValdiationRating {
-            self.validated_tasks.get(&index).unwrap()
         }
         #[ink(message)]
         pub fn get_registered_nodes(&self) -> Vec<AccountId> {
@@ -86,6 +78,40 @@ mod demithree {
         #[ink(message)]
         pub fn get_approved_validators(&self) -> Vec<AccountId> {
             self.approved_validators.clone()
+        }
+        //Task Managment
+        #[ink(message)]
+        pub fn get_tasks(&self) -> Vec<(u32, String)> {
+            let mut tasks: Vec<(u32, String)> = Vec::new();
+            for task_index in 0..self.task_count {
+                if let Some(task) = self.tasks.get(&task_index) {
+                    tasks.push((task_index, task.clone()));
+                }
+            }
+            tasks
+        }
+        #[ink(message)]
+        pub fn get_task_count(&self) -> u32 {
+            self.task_count
+        }
+        #[ink(message)]
+        pub fn get_validated_task_count(&self) -> u32 {
+            self.validated_task_count
+        }
+        #[ink(message)]
+        pub fn get_validated_tasks(&self) -> Vec<(u32, ValidationRating)> {
+            let mut validated_tasks: Vec<(u32, ValidationRating)> = Vec::new();
+            for task_index in 0..self.validated_task_count {
+                if let Some(rating) = self.validated_tasks.get(&task_index) {
+                    validated_tasks.push((task_index, rating.clone()));
+                }
+            }
+            validated_tasks
+        }
+        //Miscellaneous
+        #[ink(message)]
+        pub fn get_init(&mut self) -> bool {
+            self.is_init
         }
 
         /*******/
@@ -110,9 +136,9 @@ mod demithree {
             self.task_count += self.task_count + 1;
         }
         #[ink(message)]
-        pub fn validate_task(&mut self, index: u32, rating: ValdiationRating) {
+        pub fn validate_task(&mut self, index: u32, rating: ValidationRating) {
             self.validated_tasks.insert(index, &rating);
-            self.validated_tasks_count += 1;
+            self.validated_task_count += 1;
         }
         #[ink(message)]
         pub fn register_node(&mut self) {
