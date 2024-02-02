@@ -24,7 +24,7 @@ mod demithree {
         registered_nodes: Vec<AccountId>,
         registered_validator: Vec<AccountId>,
         approved_nodes: Vec<AccountId>,
-        approved_validator: Vec<AccountId>,
+        approved_validators: Vec<AccountId>,
 
         //Task Managment
         tasks: Mapping<u32, String>,
@@ -49,7 +49,7 @@ mod demithree {
                 registered_nodes: Vec::new(),
                 registered_validator: Vec::new(),
                 approved_nodes: Vec::new(),
-                approved_validator: Vec::new(),
+                approved_validators: Vec::new(),
             }
         }
         /******/
