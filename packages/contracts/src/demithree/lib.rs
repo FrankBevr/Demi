@@ -22,7 +22,7 @@ mod demithree {
         //Actors
         owner: AccountId,
         registered_nodes: Vec<AccountId>,
-        registered_validator: Vec<AccountId>,
+        registered_validators: Vec<AccountId>,
         approved_nodes: Vec<AccountId>,
         approved_validators: Vec<AccountId>,
 
@@ -47,7 +47,7 @@ mod demithree {
                 validated_tasks_count: 0,
                 is_init: false,
                 registered_nodes: Vec::new(),
-                registered_validator: Vec::new(),
+                registered_validators: Vec::new(),
                 approved_nodes: Vec::new(),
                 approved_validators: Vec::new(),
             }
@@ -77,7 +77,7 @@ mod demithree {
         }
         #[ink(message)]
         pub fn get_registered_validators(&self) -> Vec<AccountId> {
-            self.registered_validator.clone()
+            self.registered_validators.clone()
         }
         #[ink(message)]
         pub fn get_approved_nodes(&self) -> Vec<AccountId> {
@@ -122,7 +122,7 @@ mod demithree {
         #[ink(message)]
         pub fn register_validator(&mut self) {
             let caller = self.env().caller();
-            self.registered_validator.push(caller)
+            self.registered_validators.push(caller)
         }
         #[ink(message)]
         pub fn unregister_node(&mut self, node: AccountId) {
@@ -130,7 +130,7 @@ mod demithree {
         }
         #[ink(message)]
         pub fn unregister_validator(&mut self, validator: AccountId) {
-            self.registered_validator.retain(|&x| x != validator);
+            self.registered_validators.retain(|&x| x != validator);
         }
         #[ink(message)]
         pub fn approve_node(&mut self, node: AccountId) {
@@ -159,12 +159,12 @@ mod demithree {
 
             let node_clone = validator.clone();
             let index = self
-                .registered_validator
+                .registered_validators
                 .iter()
                 .position(|x| x.clone() == node_clone);
             match index {
                 Some(index) => {
-                    self.registered_validator.remove(index);
+                    self.registered_validators.remove(index);
                     self.approved_validators.push(validator);
                 }
                 None => {}
