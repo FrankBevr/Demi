@@ -8,6 +8,7 @@ import LevaDemiOne from "./components/LevaDemiOne";
 import LevaGreeter from "./components/LevaGreeter";
 import Logo from "./components/Logo";
 import LevaDemiTwo from "./components/LevaDemiTwo";
+import LevaDemiThree from "./components/LevaDemiThree";
 
 export default function HomePage() {
   const { api } = useInkathon();
@@ -18,6 +19,7 @@ export default function HomePage() {
       <LevaGreeter />
       <LevaDemiOne />
       <LevaDemiTwo />
+      <LevaDemiThree />
       <div className="overflow-x-hidden-container">
         <div className="center-container">
           <div className="flex-container">
