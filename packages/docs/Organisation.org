@@ -221,7 +221,7 @@ CLOCK: [2024-01-18 Thu 10:45]--[2024-01-18 Thu 11:07] =>  0:22
 - [X] add a write state button (ported again)
 - [X] add all current functions. (ported again)
 
-** DONE [#A] CODE - Button Clicky - Friday [6/6]
+** DONE [#A] CODE - Button Clicky - Friday - 2:44 [6/6]
 :LOGBOOK:
 CLOCK: [2024-01-19 Fri 15:32]--[2024-01-19 Fri 15:51] =>  0:19
 CLOCK: [2024-01-19 Fri 15:12]--[2024-01-19 Fri 15:28] =>  0:16
@@ -248,7 +248,7 @@ CLOCK: [2024-01-19 Fri 11:40]--[2024-01-19 Fri 12:27] =>  0:47
   - [X] there is transient
   - [X] useCallback, doesnt non cool things, don't know how to avoid, yet
 
-** DONE [#A] Do Debug UI - Monday [4/4]
+** DONE [#A] Do Debug UI - Monday - 3:19 [4/4]
 :LOGBOOK:
 CLOCK: [2024-01-22 Mon 14:35]--[2024-01-22 Mon 16:05] =>  1:30
 CLOCK: [2024-01-22 Mon 13:47]--[2024-01-22 Mon 14:25] =>  0:38
@@ -256,17 +256,15 @@ CLOCK: [2024-01-22 Mon 12:53]--[2024-01-22 Mon 13:31] =>  0:38
 CLOCK: [2024-01-22 Mon 11:53]--[2024-01-22 Mon 12:09] =>  0:17
 CLOCK: [2024-01-22 Mon 11:15]--[2024-01-22 Mon 11:32] =>  0:17
 :END:
-
 - [X] set_validator() (ported again again)
 - [X] set_node() (ported again again)
 - [X] figure out how to update value nicely (ported again)
   - [X] there is transient
   - [X] useCallback, doesnt non cool things, don't know how to avoid, yet
 - [X] repeat useHooks of react to find bug
-
-** DONE [#A] Do Debug UI - Tuesday [4/4]
+** DONE [#A] Do Debug UI - Tuesday - 2:45 [4/4]
 :LOGBOOK:
-CLOCK: [2024-01-23 Tue 14:25]--[2024-01-26 Fri 11:25] => 69:00
+CLOCK: [2024-01-23 Tue 14:25]--[2024-01-23 Tue 16:15] =>  1:50
 CLOCK: [2024-01-23 Tue 13:12]--[2024-01-23 Tue 14:07] =>  0:55
 :END:
 - [X] set_validator() (ported again again)
@@ -275,13 +273,13 @@ CLOCK: [2024-01-23 Tue 13:12]--[2024-01-23 Tue 14:07] =>  0:55
   - [X] there is transient
   - [X] useCallback, doesnt non cool things, don't know how to avoid, yet
 - [X] forgot to record what i actually did
-** DONE [#A] Do Debug UI - Wednesday [1/1]
+** DONE [#A] Do Debug UI - Wednesday - 4:00 [1/1]
 :LOGBOOK:
 CLOCK: [2024-01-24 Wed 14:25]--[2024-01-24 Wed 16:25] =>  2:00
 CLOCK: [2024-01-24 Wed 10:25]--[2024-01-24 Wed 12:25] =>  2:00
 :END:
 - [X] fix more bugs on Debug UI
-** DONE [#A] Make it Work - Friday [10/10]
+** DONE [#A] Make it Work - Friday - 5:50 [10/10]
 :LOGBOOK:
 CLOCK: [2024-01-26 Fri 18:21]--[2024-01-26 Fri 18:49] =>  0:28
 CLOCK: [2024-01-26 Fri 17:21]--[2024-01-26 Fri 18:13] =>  0:52
@@ -302,14 +300,14 @@ CLOCK: [2024-01-26 Fri 10:08]--[2024-01-26 Fri 11:01] =>  0:53
 - [X] add nodes, validator, tasks to contracts
 - [X] add read function to nodes, validator, tasks
 - [X] add write function to nodes, validators, tasks (ported)
-** DONE [#C] Fix PC - Saturday  [3/3]
+** DONE [#C] Fix PC - Saturday - 5:00 [3/3]
 :LOGBOOK:
 CLOCK: [2024-01-27 Sat 10:01]--[2024-01-27 Sat 15:01] =>  5:00
 :END:
 - [X] PC got fucked up, fix it (ported)
 - [X] be frustated
 - [X] add write function to nodes, validators, tasks (ported)
-** DONE [#C] Fix PC - Sunday [3/3]
+** DONE [#C] Fix PC - Sunday - 1:43 [3/3]
 :LOGBOOK:
 CLOCK: [2024-01-28 Sun 09:35]--[2024-01-28 Sun 11:18] =>  1:43
 :END:
@@ -317,7 +315,7 @@ CLOCK: [2024-01-28 Sun 09:35]--[2024-01-28 Sun 11:18] =>  1:43
 - [X] be frustated
 - [X] add write function to nodes, validators, tasks (ported)
 
-** DONE [#A] Make it nicey [6/6]
+** DONE [#A] Make it nicey - 2:45 [6/6]
 :LOGBOOK:
 CLOCK: [2024-01-29 Mon 20:13]--[2024-01-29 Mon 20:41] =>  0:28
 CLOCK: [2024-01-29 Mon 19:14]--[2024-01-29 Mon 20:10] =>  0:56
@@ -330,7 +328,7 @@ CLOCK: [2024-01-29 Mon 17:24]--[2024-01-29 Mon 17:32] =>  0:08
 - [X] add tasks
 - [X] add nodes
 - [X] add validators
-** DONE [#A] Finish it up [15/15]
+** DONE [#A] Finish it up - 6:05 [15/15]
 :LOGBOOK:
 CLOCK: [2024-01-31 Wed 02:32]--[2024-01-31 Wed 03:12] =>  0:40
 CLOCK: [2024-01-31 Wed 01:46]--[2024-01-31 Wed 02:28] =>  0:42
@@ -361,7 +359,7 @@ CLOCK: [2024-01-30 Tue 08:34]--[2024-01-30 Tue 10:06] =>  1:32
 - [X] record for submission
 - [X] upload
 - [X] call it a day
-** DONE [#C] Throw 4 days more in [28/28]
+** DONE [#C] Throw 4 days more in - 3:15 [28/28]
 :LOGBOOK:
 CLOCK: [2024-02-01 Thu 16:04]--[2024-02-01 Thu 16:14] =>  0:10
 CLOCK: [2024-02-01 Thu 15:11]--[2024-02-01 Thu 16:04] =>  0:53
@@ -403,9 +401,35 @@ CLOCK: [2024-02-01 Thu 11:25]--[2024-02-01 Thu 11:34] =>  0:09
 - [X] add approve_node(), approve_validator()
 - [X] rm empty_message()
 - [X] rearange in read/write section
-
-** TODO [#C] Throw 4 days more in [/]
+** DONE [#C] Throw 4 days more in - 2:38 [16/16]
 :LOGBOOK:
+CLOCK: [2024-02-02 Fri 18:08]--[2024-02-02 Fri 18:15] =>  0:07
+CLOCK: [2024-02-02 Fri 11:54]--[2024-02-02 Fri 12:10] =>  0:16
+CLOCK: [2024-02-02 Fri 11:18]--[2024-02-02 Fri 11:48] =>  0:30
+CLOCK: [2024-02-02 Fri 10:28]--[2024-02-02 Fri 11:09] =>  0:41
+CLOCK: [2024-02-02 Fri 09:31]--[2024-02-02 Fri 10:23] =>  0:52
 CLOCK: [2024-02-02 Fri 09:12]--[2024-02-02 Fri 09:24] =>  0:12
 :END:
+- [X] grab a coffee
+- [X] (contracts) fix typo
+- [X] (contracts) add getters
+- [X] (contracts) rename scripts
+- [X] (docs) update Organisation.org
+- [X] (frontend) initialise LeveDemiThree.tsx
+- [X] (contracts) commit latest deployments
+- [X] (contracts) update .gitignore
+- [X] (frontend) rearrange LeveGreeter.tsx
+- [X] (frontend) rearrange LevaDemiOne.tsx
+- [X] (frontend) rearrange LevaDemiTwo.tsx
+- [X] (frontend) npm run format
+- [X] (contracts) fix typo
+- [X] (frontend) setup read boileplate for LeveDemiThree.tsx
+- [X] (contracts) update demithree
+- [X] (frontend) align with contract, LevaDemiThree.tsx
+** TODO [#C] Throw 4 days more in [2/2]
+:LOGBOOK:
+CLOCK: [2024-02-03 Sat 07:50]--[2024-02-03 Sat 08:10] =>  0:20
+:END:
+- [X] resetup up
+- [X] finish things from yesterday
 - [ ] grab a coffee
