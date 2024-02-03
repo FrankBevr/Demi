@@ -2,11 +2,12 @@
 
 #[ink::contract]
 mod demithree {
+    use ink::env::debug_println;
     use ink::prelude::string::String;
     use ink::prelude::vec::Vec;
     use ink::storage::Mapping;
 
-    #[derive(Clone, Copy, scale::Decode, scale::Encode)]
+    #[derive(Clone, Copy, scale::Decode, scale::Encode, Debug)]
     #[cfg_attr(
         feature = "std",
         derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
@@ -119,6 +120,8 @@ mod demithree {
         /*******/
         #[ink(message)]
         pub fn init(&mut self) {
+            debug_println!("The caller:");
+            debug_println!("{:?}", self.env().caller());
             if self.owner == AccountId::from([0xFF as u8; 32]) {
                 self.owner = self.env().caller();
                 self.is_init = true;
@@ -126,40 +129,58 @@ mod demithree {
         }
         #[ink(message)]
         pub fn change_owner(&mut self, new_owner: AccountId) {
+            debug_println!("The new Owner:");
+            debug_println!("{:?}", new_owner);
             if self.owner == self.env().caller() {
                 self.owner = new_owner
             }
         }
         #[ink(message)]
         pub fn add_task(&mut self, new_task: String) {
+            debug_println!("The task:");
+            debug_println!("{:?}", new_task);
             self.tasks.insert(self.task_count, &new_task);
             self.task_count += self.task_count + 1;
         }
         #[ink(message)]
         pub fn validate_task(&mut self, index: u32, rating: ValidationRating) {
+            debug_println!("The index:");
+            debug_println!("{:?}", index);
+            debug_println!("The rating:");
+            debug_println!("{:?}", rating);
             self.validated_tasks.insert(index, &rating);
             self.validated_task_count += 1;
         }
         #[ink(message)]
         pub fn register_node(&mut self) {
+            debug_println!("The caller:");
+            debug_println!("{:?}", self.env().caller());
             let caller = self.env().caller();
             self.registered_nodes.push(caller)
         }
         #[ink(message)]
         pub fn register_validator(&mut self) {
+            debug_println!("The caller:");
+            debug_println!("{:?}", self.env().caller());
             let caller = self.env().caller();
             self.registered_validators.push(caller)
         }
         #[ink(message)]
         pub fn unregister_node(&mut self, node: AccountId) {
+            debug_println!("The node:");
+            debug_println!("{:?}", node);
             self.registered_nodes.retain(|&x| x != node);
         }
         #[ink(message)]
         pub fn unregister_validator(&mut self, validator: AccountId) {
+            debug_println!("The validator:");
+            debug_println!("{:?}", validator);
             self.registered_validators.retain(|&x| x != validator);
         }
         #[ink(message)]
         pub fn approve_node(&mut self, node: AccountId) {
+            debug_println!("The node:");
+            debug_println!("{:?}", node);
             if self.env().caller() != self.owner {
                 return;
             }
@@ -179,6 +200,8 @@ mod demithree {
         }
         #[ink(message)]
         pub fn approved_validator(&mut self, validator: AccountId) {
+            debug_println!("The validator:");
+            debug_println!("{:?}", validator);
             if self.env().caller() != self.owner {
                 return;
             }
