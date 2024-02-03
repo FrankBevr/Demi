@@ -132,10 +132,76 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
   );
 
   /*WRITE*/
+  const [newNode, setNewNode] = useState<string>();
+  const [newValidator, setNewValidator] = useState<string>();
+  const [newTask, setNewTask] = useState<string>();
+  const [taskIndex, setTaskIndex] = useState<number>();
+  const [taskRating, setTaskRating] = useState<number>();
+  const [toUnregisterNode, setToUnregisterNode] = useState<string>();
+  const [toUnregisterValidator, setToUnregisterValidator] = useState<string>();
+  const [toAppoveNode, setToAppoveNode] = useState<string>();
+  const [toAppoveValidator, setToAppoveValidator] = useState<string>();
   const [, setWrite] = useControls(
     "DEMITHREE_WRITE",
     () => ({
       init: button(() => init()),
+      newOwner: {
+        value: "",
+        onChange: (c) => {
+          setNewNode(c);
+        },
+      },
+      changeOwner: button(() => change_owner()),
+      newTask: {
+        value: "",
+        onChange: (c) => {
+          setNewTask(c)
+        }
+      },
+      addTask: button(() => add_task()),
+      taskIndex: {
+        value: 0,
+        onChange: (c) => {
+          setTaskIndex(c)
+        }
+      },
+      taskRating: {
+        value: 0,
+        onChange: (c) => {
+          setTaskRating(c)
+        }
+      },
+      validateTask: button(() => validate_task()),
+      register_node: button(() => register_node()),
+      register_validator: button(() => register_validator()),
+      toUnregisterNode: {
+        value: "",
+        onChange: (c) => {
+          setToUnregisterNode(c)
+        }
+      },
+      unregister_node: button(() => unregister_node()),
+      toUnregisterValidator: {
+        value: "",
+        onChange: (c) => {
+          setToUnregisterValidator(c)
+        }
+      },
+      unregister_validator: button(() => unregister_validator()),
+      toAppoveNode: {
+        value: "",
+        onChange: (c) => {
+          setToAppoveNode(c)
+        }
+      },
+      approve_node: button(() => approve_node()),
+      toAppoveValidator: {
+        value: "",
+        onChange: (c) => {
+          setToAppoveValidator(c)
+        }
+      },
+      approved_validator: button(() => approved_validator())
     }),
     [
       activeAccount,
@@ -251,6 +317,15 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
     );
     await get_init();
   };
+  const change_owner = async () => { }
+  const add_task = async () => { }
+  const validate_task = async () => { }
+  const register_node = async () => { }
+  const register_validator = async () => { }
+  const unregister_node = async () => { }
+  const unregister_validator = async () => { }
+  const approve_node = async () => { }
+  const approved_validator = async () => { }
 
   return null;
 };
