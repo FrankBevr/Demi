@@ -172,15 +172,56 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
     setRead({ owner: output });
     set_owner(output);
   };
-  const get_registered_nodes = async () => {};
-  const get_registered_validators = async () => {};
-  const get_approved_nodes = async () => {};
-  const get_approved_validators = async () => {};
+  const get_registered_nodes = async () => {
+    if (!contractDemiThree || !api) return;
+    const result = await contractQuery(api, "", contractDemiThree, "get_registered_nodes");
+    const { output } = decodeOutput(result, contractDemiThree, "get_registered_nodes");
+    set_registered_nodesArr(output);
+  };
+  const get_registered_validators = async () => {
+    if (!contractDemiThree || !api) return;
+    const result = await contractQuery(api, "", contractDemiThree, "get_registered_validators");
+    const { output } = decodeOutput(result, contractDemiThree, "get_registered_validators");
+    set_registered_validatorsArr(output);
+  };
+  const get_approved_nodes = async () => {
+    if (!contractDemiThree || !api) return;
+    const result = await contractQuery(api, "", contractDemiThree, "get_approved_nodes");
+    const { output } = decodeOutput(result, contractDemiThree, "get_approved_nodes");
+    set_approved_nodesArr(output);
+  };
+  const get_approved_validators = async () => {
+    if (!contractDemiThree || !api) return;
+    const result = await contractQuery(api, "", contractDemiThree, "get_approved_validators");
+    const { output } = decodeOutput(result, contractDemiThree, "get_approved_validators");
+    set_approved_validatorsArr(output);
+  };
 
   //Task Managment
-  const get_tasks = async () => {};
-  const get_task_count = async () => {};
-  const get_validated_tasks = async () => {};
+  const get_tasks = async () => {
+    if (!contractDemiThree || !api) return;
+    const result = await contractQuery(api, "", contractDemiThree, "get_tasks");
+    const { output } = decodeOutput(result, contractDemiThree, "get_tasks");
+    /******/
+    /*TODO*/
+    /******/
+    console.log(output)
+  };
+  const get_task_count = async () => {
+    if (!contractDemiThree || !api) return;
+    const result = await contractQuery(api, "", contractDemiThree, "get_task_count");
+    const { output } = decodeOutput(result, contractDemiThree, "get_task_count");
+    set_task_count(output);
+  };
+  const get_validated_tasks = async () => {
+    if (!contractDemiThree || !api) return;
+    const result = await contractQuery(api, "", contractDemiThree, "get_task_count");
+    const { output } = decodeOutput(result, contractDemiThree, "get_task_count");
+    /******/
+    /*TODO*/
+    /******/
+    console.log(output)
+  };
 
   //Miscellaneous
   const get_init = async () => {
