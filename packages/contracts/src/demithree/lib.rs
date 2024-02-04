@@ -152,18 +152,16 @@ mod demithree {
             self.validated_task_count += 1;
         }
         #[ink(message)]
-        pub fn register_node(&mut self) {
-            debug_println!("The caller:");
-            debug_println!("{:?}", self.env().caller());
-            let caller = self.env().caller();
-            self.registered_nodes.push(caller)
+        pub fn register_node(&mut self, new_node: AccountId) {
+            debug_println!("The new_node:");
+            debug_println!("{:?}", new_node);
+            self.registered_nodes.push(new_node)
         }
         #[ink(message)]
-        pub fn register_validator(&mut self) {
-            debug_println!("The caller:");
-            debug_println!("{:?}", self.env().caller());
-            let caller = self.env().caller();
-            self.registered_validators.push(caller)
+        pub fn register_validator(&mut self, new_validator: AccountId) {
+            debug_println!("The new_validator:");
+            debug_println!("{:?}", new_validator);
+            self.registered_validators.push(new_validator)
         }
         #[ink(message)]
         pub fn unregister_node(&mut self, node: AccountId) {
