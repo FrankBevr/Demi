@@ -139,6 +139,8 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
   const [newTask, setNewTask] = useState<string>();
   const [taskIndex, setTaskIndex] = useState<number>();
   const [taskRating, setTaskRating] = useState<number>();
+  const [toRegisterNode, setToRegisterNode] = useState<string>();
+  const [toRegisterValidator, setToRegisterValidator] = useState<string>();
   const [toUnregisterNode, setToUnregisterNode] = useState<string>();
   const [toUnregisterValidator, setToUnregisterValidator] = useState<string>();
   const [toAppoveNode, setToAppoveNode] = useState<string>();
@@ -174,7 +176,19 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
         },
       },
       validateTask: button(() => validate_task()),
+      toRegisterNode: {
+        value: "",
+        onChange: (c) => {
+          setToRegisterNode(c);
+        },
+      },
       register_node: button(() => register_node()),
+      toRegisterValidator: {
+        value: "",
+        onChange: (c) => {
+          setToRegisterValidator(c);
+        },
+      },
       register_validator: button(() => register_validator()),
       toUnregisterNode: {
         value: "",
@@ -410,13 +424,119 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
     setWrite({ newTask: "" });
     setNewTask("");
   };
-  const validate_task = async () => { };
-  const register_node = async () => { };
-  const register_validator = async () => { };
-  const unregister_node = async () => { };
-  const unregister_validator = async () => { };
-  const approve_node = async () => { };
-  const approved_validator = async () => { };
+  const validate_task = async () => {
+    if (!activeAccount || !contractDemiThree || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiThree,
+      "validate_task",
+      {},
+      [taskIndex, taskRating],
+    );
+    await get_validated_tasks();
+    setWrite({ taskIndex: 0, taskRating: 0 });
+    setTaskIndex(0);
+    setTaskRating(0);
+  };
+  const register_node = async () => {
+    if (!activeAccount || !contractDemiThree || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiThree,
+      "register_node",
+      {},
+      [toRegisterNode],
+    );
+    await get_registered_nodes();
+    setWrite({ toRegisterNode: "" });
+    setToRegisterNode("")
+  };
+  const register_validator = async () => {
+    if (!activeAccount || !contractDemiThree || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiThree,
+      "register_validator",
+      {},
+      [toRegisterValidator],
+    );
+    await get_registered_validators();
+    setWrite({ toRegisterValidator: "" });
+    setToRegisterValidator("")
+  };
+  const unregister_node = async () => {
+    if (!activeAccount || !contractDemiThree || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiThree,
+      "unregister_node",
+      {},
+      [toUnregisterNode],
+    );
+    await get_registered_nodes();
+    setWrite({ toUnregisterNode: "" });
+    setToUnregisterNode("")
+  };
+  const unregister_validator = async () => {
+    if (!activeAccount || !contractDemiThree || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiThree,
+      "unregister_validator",
+      {},
+      [toUnregisterValidator],
+    );
+    await get_registered_validators();
+    setWrite({ toUnregisterValidator: "" });
+    setToUnregisterValidator("")
+  };
+  const approve_node = async () => {
+    if (!activeAccount || !contractDemiThree || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiThree,
+      "approve_node",
+      {},
+      [toAppoveNode],
+    );
+    await get_approved_nodes();
+    setWrite({ toAppoveNode: "" });
+    setToAppoveNode("")
+  };
+  const approved_validator = async () => {
+    if (!activeAccount || !contractDemiThree || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiThree,
+      "approved_validator",
+      {},
+      [toAppoveValidator],
+    );
+    await get_approved_validators();
+    setWrite({ toAppoveValidator: "" });
+    setToAppoveValidator("")
+  };
 
   return null;
 };
