@@ -128,11 +128,13 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
       validated_tasksArr,
       validated_task_count,
       isInit,
+
     ],
   );
 
   /*WRITE*/
   const [newNode, setNewNode] = useState<string>();
+  const [newOwner, setNewOwner] = useState<string>();
   const [newValidator, setNewValidator] = useState<string>();
   const [newTask, setNewTask] = useState<string>();
   const [taskIndex, setTaskIndex] = useState<number>();
@@ -148,28 +150,28 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
       newOwner: {
         value: "",
         onChange: (c) => {
-          setNewNode(c);
+          setNewOwner(c);
         },
       },
       changeOwner: button(() => change_owner()),
       newTask: {
         value: "",
         onChange: (c) => {
-          setNewTask(c)
-        }
+          setNewTask(c);
+        },
       },
       addTask: button(() => add_task()),
       taskIndex: {
         value: 0,
         onChange: (c) => {
-          setTaskIndex(c)
-        }
+          setTaskIndex(c);
+        },
       },
       taskRating: {
         value: 0,
         onChange: (c) => {
-          setTaskRating(c)
-        }
+          setTaskRating(c);
+        },
       },
       validateTask: button(() => validate_task()),
       register_node: button(() => register_node()),
@@ -177,31 +179,31 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
       toUnregisterNode: {
         value: "",
         onChange: (c) => {
-          setToUnregisterNode(c)
-        }
+          setToUnregisterNode(c);
+        },
       },
       unregister_node: button(() => unregister_node()),
       toUnregisterValidator: {
         value: "",
         onChange: (c) => {
-          setToUnregisterValidator(c)
-        }
+          setToUnregisterValidator(c);
+        },
       },
       unregister_validator: button(() => unregister_validator()),
       toAppoveNode: {
         value: "",
         onChange: (c) => {
-          setToAppoveNode(c)
-        }
+          setToAppoveNode(c);
+        },
       },
       approve_node: button(() => approve_node()),
       toAppoveValidator: {
         value: "",
         onChange: (c) => {
-          setToAppoveValidator(c)
-        }
+          setToAppoveValidator(c);
+        },
       },
-      approved_validator: button(() => approved_validator())
+      approved_validator: button(() => approved_validator()),
     }),
     [
       activeAccount,
@@ -218,6 +220,18 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
       validated_tasksArr,
       validated_task_count,
       isInit,
+
+      newOwner,
+      newNode,
+      newOwner,
+      newValidator,
+      newTask,
+      taskIndex,
+      taskRating,
+      toUnregisterNode,
+      toUnregisterValidator,
+      toAppoveNode,
+      toAppoveValidator,
     ],
   );
 
@@ -226,7 +240,6 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
   /****************/
   //Actors
   const get_owner = async () => {
-    console.log("get_owner was called");
     if (!contractDemiThree || !api) return;
     const result = await contractQuery(api, "", contractDemiThree, "get_owner");
     const { output, isError, decodedOutput } = decodeOutput(
@@ -240,26 +253,62 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
   };
   const get_registered_nodes = async () => {
     if (!contractDemiThree || !api) return;
-    const result = await contractQuery(api, "", contractDemiThree, "get_registered_nodes");
-    const { output } = decodeOutput(result, contractDemiThree, "get_registered_nodes");
+    const result = await contractQuery(
+      api,
+      "",
+      contractDemiThree,
+      "get_registered_nodes",
+    );
+    const { output } = decodeOutput(
+      result,
+      contractDemiThree,
+      "get_registered_nodes",
+    );
     set_registered_nodesArr(output);
   };
   const get_registered_validators = async () => {
     if (!contractDemiThree || !api) return;
-    const result = await contractQuery(api, "", contractDemiThree, "get_registered_validators");
-    const { output } = decodeOutput(result, contractDemiThree, "get_registered_validators");
+    const result = await contractQuery(
+      api,
+      "",
+      contractDemiThree,
+      "get_registered_validators",
+    );
+    const { output } = decodeOutput(
+      result,
+      contractDemiThree,
+      "get_registered_validators",
+    );
     set_registered_validatorsArr(output);
   };
   const get_approved_nodes = async () => {
     if (!contractDemiThree || !api) return;
-    const result = await contractQuery(api, "", contractDemiThree, "get_approved_nodes");
-    const { output } = decodeOutput(result, contractDemiThree, "get_approved_nodes");
+    const result = await contractQuery(
+      api,
+      "",
+      contractDemiThree,
+      "get_approved_nodes",
+    );
+    const { output } = decodeOutput(
+      result,
+      contractDemiThree,
+      "get_approved_nodes",
+    );
     set_approved_nodesArr(output);
   };
   const get_approved_validators = async () => {
     if (!contractDemiThree || !api) return;
-    const result = await contractQuery(api, "", contractDemiThree, "get_approved_validators");
-    const { output } = decodeOutput(result, contractDemiThree, "get_approved_validators");
+    const result = await contractQuery(
+      api,
+      "",
+      contractDemiThree,
+      "get_approved_validators",
+    );
+    const { output } = decodeOutput(
+      result,
+      contractDemiThree,
+      "get_approved_validators",
+    );
     set_approved_validatorsArr(output);
   };
 
@@ -268,30 +317,41 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
     if (!contractDemiThree || !api) return;
     const result = await contractQuery(api, "", contractDemiThree, "get_tasks");
     const { output } = decodeOutput(result, contractDemiThree, "get_tasks");
-    /******/
-    /*TODO*/
-    /******/
-    console.log(output)
+    setTasksArr(output);
   };
   const get_task_count = async () => {
     if (!contractDemiThree || !api) return;
-    const result = await contractQuery(api, "", contractDemiThree, "get_task_count");
-    const { output } = decodeOutput(result, contractDemiThree, "get_task_count");
+    const result = await contractQuery(
+      api,
+      "",
+      contractDemiThree,
+      "get_task_count",
+    );
+    const { output } = decodeOutput(
+      result,
+      contractDemiThree,
+      "get_task_count",
+    );
     set_task_count(output);
   };
   const get_validated_tasks = async () => {
     if (!contractDemiThree || !api) return;
-    const result = await contractQuery(api, "", contractDemiThree, "get_task_count");
-    const { output } = decodeOutput(result, contractDemiThree, "get_task_count");
-    /******/
-    /*TODO*/
-    /******/
-    console.log(output)
+    const result = await contractQuery(
+      api,
+      "",
+      contractDemiThree,
+      "get_task_count",
+    );
+    const { output } = decodeOutput(
+      result,
+      contractDemiThree,
+      "get_task_count",
+    );
+    set_validated_tasksArr(output)
   };
 
   //Miscellaneous
   const get_init = async () => {
-    console.log("get_init was called");
     if (!contractDemiThree || !api) return;
     const result = await contractQuery(api, "", contractDemiThree, "get_init");
     const { output } = decodeOutput(result, contractDemiThree, "get_init");
@@ -303,7 +363,6 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
   /*WRITE Functions*/
   /*****************/
   const init = async () => {
-    console.log(contractDemiThree);
     if (!activeAccount || !contractDemiThree || !activeSigner || !api) {
       return;
     }
@@ -317,15 +376,47 @@ const LevaDemiThree: React.FC<LevaProps> = () => {
     );
     await get_init();
   };
-  const change_owner = async () => { }
-  const add_task = async () => { }
-  const validate_task = async () => { }
-  const register_node = async () => { }
-  const register_validator = async () => { }
-  const unregister_node = async () => { }
-  const unregister_validator = async () => { }
-  const approve_node = async () => { }
-  const approved_validator = async () => { }
+
+  const change_owner = async () => {
+    if (!activeAccount || !contractDemiThree || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiThree,
+      "change_owner",
+      {},
+      [newOwner],
+    );
+    await get_owner();
+    setWrite({ newOwner: "" });
+    setNewOwner("");
+  };
+
+  const add_task = async () => {
+    if (!activeAccount || !contractDemiThree || !activeSigner || !api) {
+      return;
+    }
+    await contractTx(
+      api,
+      activeAccount.address,
+      contractDemiThree,
+      "add_task",
+      {},
+      [newTask],
+    );
+    await get_tasks();
+    setWrite({ newTask: "" });
+    setNewTask("");
+  };
+  const validate_task = async () => { };
+  const register_node = async () => { };
+  const register_validator = async () => { };
+  const unregister_node = async () => { };
+  const unregister_validator = async () => { };
+  const approve_node = async () => { };
+  const approved_validator = async () => { };
 
   return null;
 };
