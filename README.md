@@ -1,5 +1,8 @@
-> ⚠️ `git checkout deadline` to get the status add submission deadline  
-> ℹ️ `git log --oneline` to see the changes  
+> ⚠️ `git checkout deadline` to get the status add submission deadline\
+> ℹ️ `git log --oneline` to see the changes\
+> ℹ️ Sunday: Current State of DemiThree
+> [Video Version](https://youtu.be/vqR1VACYB5c)
+> [Written Version](https://github.com/FrankBevr/Demi/blob/main/packages/docs/04-Notes/TestingWorkflow.md)
 
 <div align="center">
 <img src="./packages/frontend/public/images/Logo-black.png" alt="logo" height="120" />
@@ -31,7 +34,8 @@ _Inspired by
 >
 > 1. User submit tasks and pays coins: f.e. "Create Data for XXX"
 > 2. AI Node takes task from contract, does jobs, send result to contract
-> 3. Validator takes result from contract, rates result, sends rated result to contract
+> 3. Validator takes result from contract, rates result, sends rated result to
+   > contract
 > 4. User see's results with ratings, picks result.
 > 5. Best Ai node gets money
 
