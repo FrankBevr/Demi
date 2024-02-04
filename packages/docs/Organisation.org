@@ -426,10 +426,28 @@ CLOCK: [2024-02-02 Fri 09:12]--[2024-02-02 Fri 09:24] =>  0:12
 - [X] (frontend) setup read boileplate for LeveDemiThree.tsx
 - [X] (contracts) update demithree
 - [X] (frontend) align with contract, LevaDemiThree.tsx
-** TODO [#C] Throw 4 days more in [2/2]
+** DONE [#C] Throw 4 days more in - 2:35 [8/8]
 :LOGBOOK:
+CLOCK: [2024-02-03 Sat 11:59]--[2024-02-03 Sat 12:19] =>  0:20
+CLOCK: [2024-02-03 Sat 11:38]--[2024-02-03 Sat 11:50] =>  0:12
+CLOCK: [2024-02-03 Sat 10:12]--[2024-02-03 Sat 10:39] =>  0:27
+CLOCK: [2024-02-03 Sat 09:53]--[2024-02-03 Sat 10:02] =>  0:09
+CLOCK: [2024-02-03 Sat 08:50]--[2024-02-03 Sat 09:30] =>  0:40
+CLOCK: [2024-02-03 Sat 08:33]--[2024-02-03 Sat 08:45] =>  0:12
+CLOCK: [2024-02-03 Sat 08:12]--[2024-02-03 Sat 08:27] =>  0:15
 CLOCK: [2024-02-03 Sat 07:50]--[2024-02-03 Sat 08:10] =>  0:20
 :END:
 - [X] resetup up
 - [X] finish things from yesterday
-- [ ] grab a coffee
+- [X] grab a coffee
+- [X] (docs) update Organisation.org
+- [X] (frontend) rearange input formats, add get_owner(), init()
+- [X] (frontend) update read Functions
+- [X] (frontend) add boilerplate for WRITE Function Section
+- [X] (contracts) add logs for finding bug
+
+** TODO [#C] Throw 4 days more in [2/2]
+:LOGBOOK:
+CLOCK: [2024-02-04 Sun 10:26]--[2024-02-04 Sun 10:30] =>  0:04
+:END:
+- [X] (docs) update Organisation.org
