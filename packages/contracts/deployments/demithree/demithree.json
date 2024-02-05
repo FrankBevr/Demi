@@ -1,6 +1,6 @@
 {
   "source": {
-    "hash": "0x5c0329d8a977a582997d9faa99698a3b7d25f29313b3e13720ac92ae85b5997b",
+    "hash": "0x8760632d80e8d841badff0bb71f290342a2bb3634fb158e792d2c1a8fdffa83f",
     "language": "ink! 4.3.0",
     "compiler": "rustc 1.73.0",
     "build_info": {
@@ -50,7 +50,7 @@
         "displayName": [
           "Balance"
         ],
-        "type": 16
+        "type": 21
       },
       "blockNumber": {
         "displayName": [
@@ -62,20 +62,20 @@
         "displayName": [
           "ChainExtension"
         ],
-        "type": 19
+        "type": 24
       },
       "hash": {
         "displayName": [
           "Hash"
         ],
-        "type": 17
+        "type": 22
       },
       "maxEventTopics": 4,
       "timestamp": {
         "displayName": [
           "Timestamp"
         ],
-        "type": 18
+        "type": 23
       }
     },
     "events": [],
@@ -91,22 +91,6 @@
         "args": [],
         "default": false,
         "docs": [],
-        "label": "get_init",
-        "mutates": true,
-        "payable": false,
-        "returnType": {
-          "displayName": [
-            "ink",
-            "MessageResult"
-          ],
-          "type": 10
-        },
-        "selector": "0x182e9ead"
-      },
-      {
-        "args": [],
-        "default": false,
-        "docs": [],
         "label": "get_owner",
         "mutates": false,
         "payable": false,
@@ -115,61 +99,9 @@
             "ink",
             "MessageResult"
           ],
-          "type": 11
+          "type": 10
         },
         "selector": "0x07fcd0b1"
-      },
-      {
-        "args": [
-          {
-            "label": "index",
-            "type": {
-              "displayName": [
-                "u32"
-              ],
-              "type": 5
-            }
-          }
-        ],
-        "default": false,
-        "docs": [],
-        "label": "get_task",
-        "mutates": false,
-        "payable": false,
-        "returnType": {
-          "displayName": [
-            "ink",
-            "MessageResult"
-          ],
-          "type": 12
-        },
-        "selector": "0x99491634"
-      },
-      {
-        "args": [
-          {
-            "label": "index",
-            "type": {
-              "displayName": [
-                "u32"
-              ],
-              "type": 5
-            }
-          }
-        ],
-        "default": false,
-        "docs": [],
-        "label": "get_validated_rating",
-        "mutates": true,
-        "payable": false,
-        "returnType": {
-          "displayName": [
-            "ink",
-            "MessageResult"
-          ],
-          "type": 13
-        },
-        "selector": "0x35984055"
       },
       {
         "args": [],
@@ -183,7 +115,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 15
+          "type": 11
         },
         "selector": "0xc9ebebec"
       },
@@ -199,7 +131,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 15
+          "type": 11
         },
         "selector": "0x7c8d5706"
       },
@@ -215,7 +147,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 15
+          "type": 11
         },
         "selector": "0x4f0ca42e"
       },
@@ -231,9 +163,89 @@
             "ink",
             "MessageResult"
           ],
-          "type": 15
+          "type": 11
         },
         "selector": "0xe28412d8"
+      },
+      {
+        "args": [],
+        "default": false,
+        "docs": [],
+        "label": "get_tasks",
+        "mutates": false,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 12
+        },
+        "selector": "0xcd7a22bc"
+      },
+      {
+        "args": [],
+        "default": false,
+        "docs": [],
+        "label": "get_task_count",
+        "mutates": false,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 15
+        },
+        "selector": "0xc3a39574"
+      },
+      {
+        "args": [],
+        "default": false,
+        "docs": [],
+        "label": "get_validated_task_count",
+        "mutates": false,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 15
+        },
+        "selector": "0x944b4c51"
+      },
+      {
+        "args": [],
+        "default": false,
+        "docs": [],
+        "label": "get_validated_tasks",
+        "mutates": false,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 16
+        },
+        "selector": "0x60334d83"
+      },
+      {
+        "args": [],
+        "default": false,
+        "docs": [],
+        "label": "get_init",
+        "mutates": true,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 20
+        },
+        "selector": "0x182e9ead"
       },
       {
         "args": [],
@@ -318,9 +330,9 @@
             "label": "rating",
             "type": {
               "displayName": [
-                "ValdiationRating"
+                "ValidationRating"
               ],
-              "type": 14
+              "type": 19
             }
           }
         ],
@@ -339,7 +351,17 @@
         "selector": "0x618f7543"
       },
       {
-        "args": [],
+        "args": [
+          {
+            "label": "new_node",
+            "type": {
+              "displayName": [
+                "AccountId"
+              ],
+              "type": 0
+            }
+          }
+        ],
         "default": false,
         "docs": [],
         "label": "register_node",
@@ -355,7 +377,17 @@
         "selector": "0x4be588c5"
       },
       {
-        "args": [],
+        "args": [
+          {
+            "label": "new_validator",
+            "type": {
+              "displayName": [
+                "AccountId"
+              ],
+              "type": 0
+            }
+          }
+        ],
         "default": false,
         "docs": [],
         "label": "register_validator",
@@ -506,7 +538,7 @@
                   "ty": 3
                 }
               },
-              "name": "registered_validator"
+              "name": "registered_validators"
             },
             {
               "layout": {
@@ -555,7 +587,7 @@
                   "layout": {
                     "enum": {
                       "dispatchKey": "0xaed11e16",
-                      "name": "ValdiationRating",
+                      "name": "ValidationRating",
                       "variants": {
                         "0": {
                           "fields": [],
@@ -584,7 +616,7 @@
                   "ty": 5
                 }
               },
-              "name": "validated_tasks_count"
+              "name": "validated_task_count"
             },
             {
               "layout": {
@@ -754,48 +786,6 @@
               {
                 "fields": [
                   {
-                    "type": 6
-                  }
-                ],
-                "index": 0,
-                "name": "Ok"
-              },
-              {
-                "fields": [
-                  {
-                    "type": 9
-                  }
-                ],
-                "index": 1,
-                "name": "Err"
-              }
-            ]
-          }
-        },
-        "params": [
-          {
-            "name": "T",
-            "type": 6
-          },
-          {
-            "name": "E",
-            "type": 9
-          }
-        ],
-        "path": [
-          "Result"
-        ]
-      }
-    },
-    {
-      "id": 11,
-      "type": {
-        "def": {
-          "variant": {
-            "variants": [
-              {
-                "fields": [
-                  {
                     "type": 0
                   }
                 ],
@@ -830,119 +820,7 @@
       }
     },
     {
-      "id": 12,
-      "type": {
-        "def": {
-          "variant": {
-            "variants": [
-              {
-                "fields": [
-                  {
-                    "type": 4
-                  }
-                ],
-                "index": 0,
-                "name": "Ok"
-              },
-              {
-                "fields": [
-                  {
-                    "type": 9
-                  }
-                ],
-                "index": 1,
-                "name": "Err"
-              }
-            ]
-          }
-        },
-        "params": [
-          {
-            "name": "T",
-            "type": 4
-          },
-          {
-            "name": "E",
-            "type": 9
-          }
-        ],
-        "path": [
-          "Result"
-        ]
-      }
-    },
-    {
-      "id": 13,
-      "type": {
-        "def": {
-          "variant": {
-            "variants": [
-              {
-                "fields": [
-                  {
-                    "type": 14
-                  }
-                ],
-                "index": 0,
-                "name": "Ok"
-              },
-              {
-                "fields": [
-                  {
-                    "type": 9
-                  }
-                ],
-                "index": 1,
-                "name": "Err"
-              }
-            ]
-          }
-        },
-        "params": [
-          {
-            "name": "T",
-            "type": 14
-          },
-          {
-            "name": "E",
-            "type": 9
-          }
-        ],
-        "path": [
-          "Result"
-        ]
-      }
-    },
-    {
-      "id": 14,
-      "type": {
-        "def": {
-          "variant": {
-            "variants": [
-              {
-                "index": 0,
-                "name": "GOOD"
-              },
-              {
-                "index": 1,
-                "name": "NORMAL"
-              },
-              {
-                "index": 2,
-                "name": "BAD"
-              }
-            ]
-          }
-        },
-        "path": [
-          "demithree",
-          "demithree",
-          "ValdiationRating"
-        ]
-      }
-    },
-    {
-      "id": 15,
+      "id": 11,
       "type": {
         "def": {
           "variant": {
@@ -984,7 +862,245 @@
       }
     },
     {
+      "id": 12,
+      "type": {
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "fields": [
+                  {
+                    "type": 13
+                  }
+                ],
+                "index": 0,
+                "name": "Ok"
+              },
+              {
+                "fields": [
+                  {
+                    "type": 9
+                  }
+                ],
+                "index": 1,
+                "name": "Err"
+              }
+            ]
+          }
+        },
+        "params": [
+          {
+            "name": "T",
+            "type": 13
+          },
+          {
+            "name": "E",
+            "type": 9
+          }
+        ],
+        "path": [
+          "Result"
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "type": {
+        "def": {
+          "sequence": {
+            "type": 14
+          }
+        }
+      }
+    },
+    {
+      "id": 14,
+      "type": {
+        "def": {
+          "tuple": [
+            5,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "id": 15,
+      "type": {
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "fields": [
+                  {
+                    "type": 5
+                  }
+                ],
+                "index": 0,
+                "name": "Ok"
+              },
+              {
+                "fields": [
+                  {
+                    "type": 9
+                  }
+                ],
+                "index": 1,
+                "name": "Err"
+              }
+            ]
+          }
+        },
+        "params": [
+          {
+            "name": "T",
+            "type": 5
+          },
+          {
+            "name": "E",
+            "type": 9
+          }
+        ],
+        "path": [
+          "Result"
+        ]
+      }
+    },
+    {
       "id": 16,
+      "type": {
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "fields": [
+                  {
+                    "type": 17
+                  }
+                ],
+                "index": 0,
+                "name": "Ok"
+              },
+              {
+                "fields": [
+                  {
+                    "type": 9
+                  }
+                ],
+                "index": 1,
+                "name": "Err"
+              }
+            ]
+          }
+        },
+        "params": [
+          {
+            "name": "T",
+            "type": 17
+          },
+          {
+            "name": "E",
+            "type": 9
+          }
+        ],
+        "path": [
+          "Result"
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "type": {
+        "def": {
+          "sequence": {
+            "type": 18
+          }
+        }
+      }
+    },
+    {
+      "id": 18,
+      "type": {
+        "def": {
+          "tuple": [
+            5,
+            19
+          ]
+        }
+      }
+    },
+    {
+      "id": 19,
+      "type": {
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "index": 0,
+                "name": "GOOD"
+              },
+              {
+                "index": 1,
+                "name": "NORMAL"
+              },
+              {
+                "index": 2,
+                "name": "BAD"
+              }
+            ]
+          }
+        },
+        "path": [
+          "demithree",
+          "demithree",
+          "ValidationRating"
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "type": {
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "fields": [
+                  {
+                    "type": 6
+                  }
+                ],
+                "index": 0,
+                "name": "Ok"
+              },
+              {
+                "fields": [
+                  {
+                    "type": 9
+                  }
+                ],
+                "index": 1,
+                "name": "Err"
+              }
+            ]
+          }
+        },
+        "params": [
+          {
+            "name": "T",
+            "type": 6
+          },
+          {
+            "name": "E",
+            "type": 9
+          }
+        ],
+        "path": [
+          "Result"
+        ]
+      }
+    },
+    {
+      "id": 21,
       "type": {
         "def": {
           "primitive": "u128"
@@ -992,7 +1108,7 @@
       }
     },
     {
-      "id": 17,
+      "id": 22,
       "type": {
         "def": {
           "composite": {
@@ -1012,7 +1128,7 @@
       }
     },
     {
-      "id": 18,
+      "id": 23,
       "type": {
         "def": {
           "primitive": "u64"
@@ -1020,7 +1136,7 @@
       }
     },
     {
-      "id": 19,
+      "id": 24,
       "type": {
         "def": {
           "variant": {}
